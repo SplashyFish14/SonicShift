@@ -11,6 +11,10 @@
 		00E4A4B129A011CD0047C1E0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A4B029A011CD0047C1E0 /* ContentView.swift */; };
 		00E4A4B329A011CD0047C1E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A4B229A011CD0047C1E0 /* Assets.xcassets */; };
 		00E4A4B629A011CD0047C1E0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A4B529A011CD0047C1E0 /* Preview Assets.xcassets */; };
+		00E4A4BE29A013160047C1E0 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 00E4A4BD29A013160047C1E0 /* AudioKit */; };
+		00E4A4C129A0133C0047C1E0 /* AudioKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = 00E4A4C029A0133C0047C1E0 /* AudioKitUI */; };
+		00E4A4C429A0135B0047C1E0 /* DunneAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 00E4A4C329A0135B0047C1E0 /* DunneAudioKit */; };
+		00E4A4C729A013760047C1E0 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 00E4A4C629A013760047C1E0 /* SoundpipeAudioKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00E4A4C129A0133C0047C1E0 /* AudioKitUI in Frameworks */,
+				00E4A4BE29A013160047C1E0 /* AudioKit in Frameworks */,
+				00E4A4C729A013760047C1E0 /* SoundpipeAudioKit in Frameworks */,
+				00E4A4C429A0135B0047C1E0 /* DunneAudioKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +91,12 @@
 			dependencies = (
 			);
 			name = MEngProject;
+			packageProductDependencies = (
+				00E4A4BD29A013160047C1E0 /* AudioKit */,
+				00E4A4C029A0133C0047C1E0 /* AudioKitUI */,
+				00E4A4C329A0135B0047C1E0 /* DunneAudioKit */,
+				00E4A4C629A013760047C1E0 /* SoundpipeAudioKit */,
+			);
 			productName = MEngProject;
 			productReference = 00E4A4AB29A011CD0047C1E0 /* MEngProject.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +125,12 @@
 				Base,
 			);
 			mainGroup = 00E4A4A229A011CC0047C1E0;
+			packageReferences = (
+				00E4A4BC29A013160047C1E0 /* XCRemoteSwiftPackageReference "AudioKit" */,
+				00E4A4BF29A0133C0047C1E0 /* XCRemoteSwiftPackageReference "AudioKitUI" */,
+				00E4A4C229A0135B0047C1E0 /* XCRemoteSwiftPackageReference "DunneAudioKit" */,
+				00E4A4C529A013760047C1E0 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */,
+			);
 			productRefGroup = 00E4A4AC29A011CD0047C1E0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -265,21 +285,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"MEngProject/Preview Content\"";
 				DEVELOPMENT_TEAM = R3Q2HP4BK8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AVSound.MEngProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -294,21 +314,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"MEngProject/Preview Content\"";
 				DEVELOPMENT_TEAM = R3Q2HP4BK8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AVSound.MEngProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -339,6 +359,64 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		00E4A4BC29A013160047C1E0 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		00E4A4BF29A0133C0047C1E0 /* XCRemoteSwiftPackageReference "AudioKitUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/AudioKitUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.4;
+			};
+		};
+		00E4A4C229A0135B0047C1E0 /* XCRemoteSwiftPackageReference "DunneAudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/DunneAudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		00E4A4C529A013760047C1E0 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/SoundpipeAudioKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		00E4A4BD29A013160047C1E0 /* AudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00E4A4BC29A013160047C1E0 /* XCRemoteSwiftPackageReference "AudioKit" */;
+			productName = AudioKit;
+		};
+		00E4A4C029A0133C0047C1E0 /* AudioKitUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00E4A4BF29A0133C0047C1E0 /* XCRemoteSwiftPackageReference "AudioKitUI" */;
+			productName = AudioKitUI;
+		};
+		00E4A4C329A0135B0047C1E0 /* DunneAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00E4A4C229A0135B0047C1E0 /* XCRemoteSwiftPackageReference "DunneAudioKit" */;
+			productName = DunneAudioKit;
+		};
+		00E4A4C629A013760047C1E0 /* SoundpipeAudioKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00E4A4C529A013760047C1E0 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */;
+			productName = SoundpipeAudioKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 00E4A4A329A011CC0047C1E0 /* Project object */;
 }
