@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0082BCA429A1679E00DD07EE /* Fader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BCA329A1679E00DD07EE /* Fader.swift */; };
+		0082BCA829A63F9600DD07EE /* SelectInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BCA729A63F9600DD07EE /* SelectInstrument.swift */; };
 		00E4A4AF29A011CD0047C1E0 /* MEngProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A4AE29A011CD0047C1E0 /* MEngProjectApp.swift */; };
 		00E4A4B129A011CD0047C1E0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A4B029A011CD0047C1E0 /* ContentView.swift */; };
 		00E4A4B329A011CD0047C1E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A4B229A011CD0047C1E0 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0082BCA329A1679E00DD07EE /* Fader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fader.swift; sourceTree = "<group>"; };
+		0082BCA729A63F9600DD07EE /* SelectInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInstrument.swift; sourceTree = "<group>"; };
 		00E4A4AB29A011CD0047C1E0 /* MEngProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEngProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E4A4AE29A011CD0047C1E0 /* MEngProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MEngProjectApp.swift; sourceTree = "<group>"; };
 		00E4A4B029A011CD0047C1E0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				00E4A4B029A011CD0047C1E0 /* ContentView.swift */,
 				00E4A4B229A011CD0047C1E0 /* Assets.xcassets */,
 				00E4A4B429A011CD0047C1E0 /* Preview Content */,
+				0082BCA329A1679E00DD07EE /* Fader.swift */,
+				0082BCA729A63F9600DD07EE /* SelectInstrument.swift */,
 			);
 			path = MEngProject;
 			sourceTree = "<group>";
@@ -157,7 +163,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0082BCA429A1679E00DD07EE /* Fader.swift in Sources */,
 				00E4A4B129A011CD0047C1E0 /* ContentView.swift in Sources */,
+				0082BCA829A63F9600DD07EE /* SelectInstrument.swift in Sources */,
 				00E4A4AF29A011CD0047C1E0 /* MEngProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,7 +302,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,7 +331,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
