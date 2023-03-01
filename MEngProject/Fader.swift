@@ -70,6 +70,8 @@ struct Home: View {
                 let progress = sliderHeight / maxHeight
                 
                 sliderProgress = progress <= 1.0 ? progress : 1
+                print(sliderProgress)
+
                 
             }).onEnded({(value) in
                 //storing last drag value for restoration
@@ -80,14 +82,13 @@ struct Home: View {
                 sliderHeight = sliderHeight >= 0 ? sliderHeight : 0
                 
                 lastDragValue = sliderHeight
-                print(sliderProgress)
                 
             }))
 
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        
+
         
     }
 }

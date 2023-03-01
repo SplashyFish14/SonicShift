@@ -19,7 +19,8 @@ struct ContentView: View {
     @State var sixthWidth: CGFloat = UIScreen.main.bounds.width/6
     
     let motionManager = CMMotionManager()
-    
+    let motionManagerDM = CMMotionManager()
+
     
     var body: some View {
 
@@ -36,11 +37,11 @@ struct ContentView: View {
                         }){
                             VStack{
                                 Image(systemName: "pianokeys.inverse")
-                                    .font(.system(size: 130))
+                                    .font(.largeTitle)
                                     .foregroundColor(Color.black)
                         
                                 Text("Instrument")
-                                    .font(.system(size: 40))
+                                    .font(.largeTitle)
                                     .fontWeight(.bold)
                             }
                         }
@@ -53,10 +54,10 @@ struct ContentView: View {
                         }){
                             VStack{
                                 Image(systemName: "slider.vertical.3")
-                                    .font(.system(size: 130))
+                                    .font(.largeTitle)
                                     .foregroundColor(Color.black)
                                 Text("Effects")
-                                    .font(.system(size: 40))
+                                    .font(.largeTitle)
                                     .fontWeight(.bold)
                             }
                         }
@@ -68,10 +69,10 @@ struct ContentView: View {
                         }){
                             VStack{
                                 Image(systemName: "gearshape.fill")
-                                    .font(.system(size: 130))
+                                    .font(.largeTitle)
                                     .foregroundColor(Color.black)
                                 Text("Settings")
-                                    .font(.system(size: 40))
+                                    .font(.largeTitle)
                                     .fontWeight(.bold)
                             }
                         }
@@ -109,20 +110,33 @@ struct ContentView: View {
 
                 }
             }
-//            motionManager.startDeviceMotionUpdates(to: OperationQueue.main) {
-//                (data, error) in
+            .onAppear(){
+//                motionManager.startGyroUpdates(to: OperationQueue.main) {
+//                    (data, error) in
+//                        if let gyroData = motionManager.gyroData {
+//                            print("gyroscope: \(gyroData.rotationRate.x)")
 //
-//                let acceleation = data.userAcceleration
-//                //let x = data.user
-//                            // Handle motion data
-//            }
+//                        }
+//
+//
+//                    // Handle motion data
+//                }
+                motionManagerDM.startDeviceMotionUpdates(to: OperationQueue.main) {
+                    (data, error) in
+                        if let deviceData = motionManagerDM.deviceMotion {
+                            print("pitch: \(deviceData.attitude.pitch)  roll: \(deviceData.attitude.roll) yaw: \(deviceData.attitude.yaw)")
+                            
+                        }
+                
+                }
+            }
         }
 
         
 
         .padding(.all, 30.0)
-    }
-}
+    }//view
+}//struct
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
