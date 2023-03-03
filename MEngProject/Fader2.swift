@@ -1,25 +1,24 @@
 //
-//  Fader.swift
+//  Fader2.swift
 //  MEngProject
 //
-//  Created by Alice Milburn on 18/02/2023.
+//  Created by Alice Milburn on 02/03/2023.
 //
 
 import SwiftUI
 
-struct Fader: View {
+struct Fader2: View {
     var body: some View {
-        Home()
+            Home2()
     }
 }
 
-struct Fader_Previews: PreviewProvider {
+struct Fader2_Previews: PreviewProvider {
     static var previews: some View {
-        Fader()
+        Fader2()
     }
 }
-
-struct Home: View {
+struct Home2: View {
     @State var maxHeight: CGFloat = ((UIScreen.main.bounds.height * 2)/3) - 20
     
     //slider properties
@@ -70,9 +69,8 @@ struct Home: View {
                 let progress = sliderHeight / maxHeight
                 
                 sliderProgress = progress <= 1.0 ? progress : 1
-                print("sllider 1 progress \(sliderProgress)")
-                fader1global = sliderProgress
-                print("fader 1 global \(fader1global)")
+                print(sliderProgress)
+                fader2global = sliderProgress
                 
             }).onEnded({(value) in
                 //storing last drag value for restoration
@@ -83,7 +81,7 @@ struct Home: View {
                 sliderHeight = sliderHeight >= 0 ? sliderHeight : 0
                 
                 lastDragValue = sliderHeight
-                //fader1global = lastDragValue
+                
             }))
 
             

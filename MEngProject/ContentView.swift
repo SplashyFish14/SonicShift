@@ -8,6 +8,11 @@
 import SwiftUI
 import Controls
 import CoreMotion
+import AudioKit
+import AudioKitUI
+import AudioToolbox
+import SoundpipeAudioKit
+import Tonic
 
 struct ContentView: View {
     @State var sliderValue: Float = 0
@@ -20,6 +25,12 @@ struct ContentView: View {
     
     let motionManager = CMMotionManager()
     let motionManagerDM = CMMotionManager()
+    
+//    @State var fader1Value: CGFloat = fader1global
+    @State var fader2Value: CGFloat = fader2global
+
+    @StateObject var conductor = OscillatorConductor()
+    
 
     
     var body: some View {
@@ -37,9 +48,11 @@ struct ContentView: View {
                         }){
                             VStack{
                                 Image(systemName: "pianokeys.inverse")
+                                    .resizable()
+                                    .scaledToFit()
                                     .font(.largeTitle)
                                     .foregroundColor(Color.black)
-                        
+                                    
                                 Text("Instrument")
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
@@ -54,7 +67,8 @@ struct ContentView: View {
                         }){
                             VStack{
                                 Image(systemName: "slider.vertical.3")
-                                    .font(.largeTitle)
+                                    .resizable()
+                                    .scaledToFit()
                                     .foregroundColor(Color.black)
                                 Text("Effects")
                                     .font(.largeTitle)
@@ -69,6 +83,8 @@ struct ContentView: View {
                         }){
                             VStack{
                                 Image(systemName: "gearshape.fill")
+                                    .resizable()
+                                    .scaledToFit()
                                     .font(.largeTitle)
                                     .foregroundColor(Color.black)
                                 Text("Settings")
@@ -86,6 +102,8 @@ struct ContentView: View {
                         
                         Fader()
                             .frame(width: sixthWidth)
+                        //conductor.osc.amplitude = Float(fader1Value)
+                        
                         VStack{
                             HStack {
                                 ArcKnob("Vol", value: $volValue)
@@ -97,20 +115,21 @@ struct ContentView: View {
                                     .frame(height: thirdHeight - 20)
                                 
                             }
-                            RoundedRectangle(cornerRadius: 50)
-                                .fill(Color.gray)
+                            AudioFilePlayBack()
                                 .frame(height: thirdHeight)
                                 
                         }
-                        Fader()
+                        Fader2()
                             .frame(width: sixthWidth)
                         
+                        //conductor.osc.frequency = Float(fader1global)
                         
                     }
 
                 }
             }
             .onAppear(){
+                
 //                motionManager.startGyroUpdates(to: OperationQueue.main) {
 //                    (data, error) in
 //                        if let gyroData = motionManager.gyroData {
@@ -121,20 +140,30 @@ struct ContentView: View {
 //
 //                    // Handle motion data
 //                }
+                conductor.start()
                 motionManagerDM.startDeviceMotionUpdates(to: OperationQueue.main) {
                     (data, error) in
                         if let deviceData = motionManagerDM.deviceMotion {
                             print("pitch: \(deviceData.attitude.pitch)  roll: \(deviceData.attitude.roll) yaw: \(deviceData.attitude.yaw)")
-                            
+                            conductor.osc.amplitude = AUValue(fader1global)
+                            print("Amplitude: \(conductor.osc.amplitude)")
+                            conductor.osc.frequency = AUValue(fader2global)
+                            print("Frequency: \(conductor.osc.frequency)")
                         }
-                
                 }
             }
         }
-
-        
-
         .padding(.all, 30.0)
+//        .onAppear(){
+//
+//            if (fader1Value > 0) {
+//                conductor.start()
+//
+//            }
+//            else {
+//                conductor.stop()
+//            }}
+            
     }//view
 }//struct
 
@@ -163,4 +192,29 @@ struct MyButtonStyle: ButtonStyle {
     }
 }
 
+class OscillatorConductor: ObservableObject, HasAudioEngine {
+    let engine = AudioEngine()
+
+//    func noteOn(pitch: Pitch, point _: CGPoint) {
+//        isPlaying = true
+//        //osc.frequency = AUValue(pitch.midiNoteNumber).midiNoteToFrequency()
+//
+//    }
+
+//    @Published var isPlaying: Bool = false {
+//        didSet { isPlaying ? osc.start() : osc.stop() }
+//    }
+
+    var osc = Oscillator()
+
+    init() {
+        osc.amplitude = 0.3//AUValue(fader1global * 100 )
+        print("Amplitude: \(osc.amplitude)")
+        osc.frequency = 440//Float(fader2global * 10000)
+        print("Frequency: \(osc.frequency)")
+        engine.output = osc
+
+    }
+    
+}
 

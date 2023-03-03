@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0082BCA429A1679E00DD07EE /* Fader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BCA329A1679E00DD07EE /* Fader.swift */; };
 		0082BCA829A63F9600DD07EE /* SelectInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BCA729A63F9600DD07EE /* SelectInstrument.swift */; };
+		0082BCAB29B0C59A00DD07EE /* Tonic in Frameworks */ = {isa = PBXBuildFile; productRef = 0082BCAA29B0C59A00DD07EE /* Tonic */; };
+		0082BCAD29B0CAA300DD07EE /* Fader2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BCAC29B0CAA300DD07EE /* Fader2.swift */; };
+		0082BCAF29B238AD00DD07EE /* AudioFilePlayBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BCAE29B238AD00DD07EE /* AudioFilePlayBack.swift */; };
 		00E4A4AF29A011CD0047C1E0 /* MEngProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A4AE29A011CD0047C1E0 /* MEngProjectApp.swift */; };
 		00E4A4B129A011CD0047C1E0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A4B029A011CD0047C1E0 /* ContentView.swift */; };
 		00E4A4B329A011CD0047C1E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A4B229A011CD0047C1E0 /* Assets.xcassets */; };
@@ -22,6 +25,8 @@
 /* Begin PBXFileReference section */
 		0082BCA329A1679E00DD07EE /* Fader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fader.swift; sourceTree = "<group>"; };
 		0082BCA729A63F9600DD07EE /* SelectInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInstrument.swift; sourceTree = "<group>"; };
+		0082BCAC29B0CAA300DD07EE /* Fader2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fader2.swift; sourceTree = "<group>"; };
+		0082BCAE29B238AD00DD07EE /* AudioFilePlayBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFilePlayBack.swift; sourceTree = "<group>"; };
 		00E4A4AB29A011CD0047C1E0 /* MEngProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEngProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E4A4AE29A011CD0047C1E0 /* MEngProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MEngProjectApp.swift; sourceTree = "<group>"; };
 		00E4A4B029A011CD0047C1E0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,6 +42,7 @@
 				00E4A4C129A0133C0047C1E0 /* AudioKitUI in Frameworks */,
 				00E4A4BE29A013160047C1E0 /* AudioKit in Frameworks */,
 				00E4A4C729A013760047C1E0 /* SoundpipeAudioKit in Frameworks */,
+				0082BCAB29B0C59A00DD07EE /* Tonic in Frameworks */,
 				00E4A4C429A0135B0047C1E0 /* DunneAudioKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,6 +75,8 @@
 				00E4A4B429A011CD0047C1E0 /* Preview Content */,
 				0082BCA329A1679E00DD07EE /* Fader.swift */,
 				0082BCA729A63F9600DD07EE /* SelectInstrument.swift */,
+				0082BCAC29B0CAA300DD07EE /* Fader2.swift */,
+				0082BCAE29B238AD00DD07EE /* AudioFilePlayBack.swift */,
 			);
 			path = MEngProject;
 			sourceTree = "<group>";
@@ -102,6 +110,7 @@
 				00E4A4C029A0133C0047C1E0 /* AudioKitUI */,
 				00E4A4C329A0135B0047C1E0 /* DunneAudioKit */,
 				00E4A4C629A013760047C1E0 /* SoundpipeAudioKit */,
+				0082BCAA29B0C59A00DD07EE /* Tonic */,
 			);
 			productName = MEngProject;
 			productReference = 00E4A4AB29A011CD0047C1E0 /* MEngProject.app */;
@@ -136,6 +145,7 @@
 				00E4A4BF29A0133C0047C1E0 /* XCRemoteSwiftPackageReference "AudioKitUI" */,
 				00E4A4C229A0135B0047C1E0 /* XCRemoteSwiftPackageReference "DunneAudioKit" */,
 				00E4A4C529A013760047C1E0 /* XCRemoteSwiftPackageReference "SoundpipeAudioKit" */,
+				0082BCA929B0C59A00DD07EE /* XCRemoteSwiftPackageReference "Tonic" */,
 			);
 			productRefGroup = 00E4A4AC29A011CD0047C1E0 /* Products */;
 			projectDirPath = "";
@@ -166,7 +176,9 @@
 				0082BCA429A1679E00DD07EE /* Fader.swift in Sources */,
 				00E4A4B129A011CD0047C1E0 /* ContentView.swift in Sources */,
 				0082BCA829A63F9600DD07EE /* SelectInstrument.swift in Sources */,
+				0082BCAD29B0CAA300DD07EE /* Fader2.swift in Sources */,
 				00E4A4AF29A011CD0047C1E0 /* MEngProjectApp.swift in Sources */,
+				0082BCAF29B238AD00DD07EE /* AudioFilePlayBack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +381,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0082BCA929B0C59A00DD07EE /* XCRemoteSwiftPackageReference "Tonic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AudioKit/Tonic.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		00E4A4BC29A013160047C1E0 /* XCRemoteSwiftPackageReference "AudioKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AudioKit/AudioKit.git";
@@ -404,6 +424,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0082BCAA29B0C59A00DD07EE /* Tonic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0082BCA929B0C59A00DD07EE /* XCRemoteSwiftPackageReference "Tonic" */;
+			productName = Tonic;
+		};
 		00E4A4BD29A013160047C1E0 /* AudioKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 00E4A4BC29A013160047C1E0 /* XCRemoteSwiftPackageReference "AudioKit" */;
