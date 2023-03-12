@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		007CE94729BA73A100BF867D /* AudioFIleMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007CE94629BA73A100BF867D /* AudioFIleMenu.swift */; };
 		0082BCA429A1679E00DD07EE /* Fader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BCA329A1679E00DD07EE /* Fader.swift */; };
 		0082BCA829A63F9600DD07EE /* SelectInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BCA729A63F9600DD07EE /* SelectInstrument.swift */; };
 		0082BCAB29B0C59A00DD07EE /* Tonic in Frameworks */ = {isa = PBXBuildFile; productRef = 0082BCAA29B0C59A00DD07EE /* Tonic */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		007CE94629BA73A100BF867D /* AudioFIleMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFIleMenu.swift; sourceTree = "<group>"; };
 		0082BCA329A1679E00DD07EE /* Fader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fader.swift; sourceTree = "<group>"; };
 		0082BCA729A63F9600DD07EE /* SelectInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInstrument.swift; sourceTree = "<group>"; };
 		0082BCAC29B0CAA300DD07EE /* Fader2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fader2.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				00E4A4B229A011CD0047C1E0 /* Assets.xcassets */,
 				00E4A4B429A011CD0047C1E0 /* Preview Content */,
 				0082BCA329A1679E00DD07EE /* Fader.swift */,
+				007CE94629BA73A100BF867D /* AudioFIleMenu.swift */,
 				0082BCA729A63F9600DD07EE /* SelectInstrument.swift */,
 				0082BCAC29B0CAA300DD07EE /* Fader2.swift */,
 				0082BCAE29B238AD00DD07EE /* AudioFilePlayBack.swift */,
@@ -176,6 +179,7 @@
 				0082BCA429A1679E00DD07EE /* Fader.swift in Sources */,
 				00E4A4B129A011CD0047C1E0 /* ContentView.swift in Sources */,
 				0082BCA829A63F9600DD07EE /* SelectInstrument.swift in Sources */,
+				007CE94729BA73A100BF867D /* AudioFIleMenu.swift in Sources */,
 				0082BCAD29B0CAA300DD07EE /* Fader2.swift in Sources */,
 				00E4A4AF29A011CD0047C1E0 /* MEngProjectApp.swift in Sources */,
 				0082BCAF29B238AD00DD07EE /* AudioFilePlayBack.swift in Sources */,

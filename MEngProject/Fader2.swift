@@ -69,8 +69,10 @@ struct Home2: View {
                 let progress = sliderHeight / maxHeight
                 
                 sliderProgress = progress <= 1.0 ? progress : 1
-                print(sliderProgress)
+                print("slider 2 progress \(sliderProgress)")
                 fader2global = sliderProgress
+                print("fader 2 global \(fader2global)")
+
                 
             }).onEnded({(value) in
                 //storing last drag value for restoration

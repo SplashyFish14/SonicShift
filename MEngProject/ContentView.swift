@@ -13,6 +13,36 @@ import AudioKitUI
 import AudioToolbox
 import SoundpipeAudioKit
 import Tonic
+import DunneAudioKit
+
+class OscillatorConductor: ObservableObject, HasAudioEngine {
+    let engine = AudioEngine()
+    
+    //    func noteOn(pitch: Pitch, point _: CGPoint) {
+    //        isPlaying = true
+    //        //osc.frequency = AUValue(pitch.midiNoteNumber).midiNoteToFrequency()
+    //
+    //    }
+    
+    //    @Published var isPlaying: Bool = false {
+    //        didSet { isPlaying ? osc.start() : osc.stop() }
+    //    }
+    
+    var osc = Oscillator()
+//    @State var synth1 = Synth(masterVolume: AUValue(fader1global))
+    init() {
+        engine.output = osc
+        try? engine.start()
+//        osc.start()
+        
+        osc.amplitude = 0.3//AUValue(fader1global * 100 )
+        print("Amplitude: \(osc.amplitude)")
+        osc.frequency = 330//Float(fader2global * 10000)
+        print("Frequency: \(osc.frequency)")
+        
+    }
+    
+}
 
 struct ContentView: View {
     @State var sliderValue: Float = 0
@@ -26,25 +56,25 @@ struct ContentView: View {
     let motionManager = CMMotionManager()
     let motionManagerDM = CMMotionManager()
     
-//    @State var fader1Value: CGFloat = fader1global
+    //    @State var fader1Value: CGFloat = fader1global
     @State var fader2Value: CGFloat = fader2global
-
+    
     @StateObject var conductor = OscillatorConductor()
     
-
     
     var body: some View {
-
+        
         
         VStack {
-
+            
             VStack(alignment: .center, spacing: 15) {
                 VStack(alignment: .center){
-                
                     HStack {
-                            
+                        
                         Button(action: {
                             print("Instrument")
+                            conductor.osc.start()
+                            
                         }){
                             VStack{
                                 Image(systemName: "pianokeys.inverse")
@@ -52,15 +82,15 @@ struct ContentView: View {
                                     .scaledToFit()
                                     .font(.largeTitle)
                                     .foregroundColor(Color.black)
-                                    
+                                
                                 Text("Instrument")
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
                             }
                         }
-                                   .buttonStyle(MyButtonStyle())
-                                   .frame(width: thirdWidth - 20)
-                                   
+                        .buttonStyle(MyButtonStyle())
+                        .frame(width: thirdWidth - 20)
+                        
                         
                         Button(action: {
                             print("Effects")
@@ -75,9 +105,9 @@ struct ContentView: View {
                                     .fontWeight(.bold)
                             }
                         }
-                                   .buttonStyle(MyButtonStyle())
-                                   .frame(width: thirdWidth - 20)
-                     
+                        .buttonStyle(MyButtonStyle())
+                        .frame(width: thirdWidth - 20)
+                        
                         Button(action: {
                             print("Settings")
                         }){
@@ -92,12 +122,13 @@ struct ContentView: View {
                                     .fontWeight(.bold)
                             }
                         }
-                                   .buttonStyle(MyButtonStyle())
-                                   .frame(width: thirdWidth - 20)
-            
+                        .buttonStyle(MyButtonStyle())
+                        .frame(width: thirdWidth - 20)
+                        
                     }
                     .padding(.top, 10.0)
                     .frame(height: thirdHeight - 30)
+                
                     HStack {
                         
                         Fader()
@@ -109,7 +140,7 @@ struct ContentView: View {
                                 ArcKnob("Vol", value: $volValue)
                                     .foregroundColor(Color.black)
                                     .frame(height: thirdHeight - 20)
-                                  
+                                
                                 ArcKnob("Reverb", value: $revValue)
                                     .foregroundColor(Color.black)
                                     .frame(height: thirdHeight - 20)
@@ -117,7 +148,7 @@ struct ContentView: View {
                             }
                             AudioFilePlayBack()
                                 .frame(height: thirdHeight)
-                                
+                            
                         }
                         Fader2()
                             .frame(width: sixthWidth)
@@ -125,46 +156,35 @@ struct ContentView: View {
                         //conductor.osc.frequency = Float(fader1global)
                         
                     }
-
+                    
                 }
             }
             .onAppear(){
+               
                 
-//                motionManager.startGyroUpdates(to: OperationQueue.main) {
-//                    (data, error) in
-//                        if let gyroData = motionManager.gyroData {
-//                            print("gyroscope: \(gyroData.rotationRate.x)")
-//
-//                        }
-//
-//
-//                    // Handle motion data
+//                if (fader1global > 0) {
+//                    conductor.start()
+//                    conductor.osc.start()
 //                }
-                conductor.start()
+//                else {
+//                    conductor.stop()
+//                }
                 motionManagerDM.startDeviceMotionUpdates(to: OperationQueue.main) {
                     (data, error) in
-                        if let deviceData = motionManagerDM.deviceMotion {
-                            print("pitch: \(deviceData.attitude.pitch)  roll: \(deviceData.attitude.roll) yaw: \(deviceData.attitude.yaw)")
-                            conductor.osc.amplitude = AUValue(fader1global)
-                            print("Amplitude: \(conductor.osc.amplitude)")
-                            conductor.osc.frequency = AUValue(fader2global)
-                            print("Frequency: \(conductor.osc.frequency)")
-                        }
+                    if let deviceData = motionManagerDM.deviceMotion {
+//                        print("pitch: \(deviceData.attitude.pitch)  roll: \(deviceData.attitude.roll) yaw: \(deviceData.attitude.yaw)")
+                        conductor.osc.amplitude = AUValue(fader1global * 10)
+                        print("Amplitude: \(conductor.osc.amplitude)")
+                        conductor.osc.frequency = AUValue((deviceData.attitude.pitch) * 1000)
+                        print("Frequency: \(conductor.osc.frequency)")
+                        
+                    }
                 }
             }
         }
         .padding(.all, 30.0)
-//        .onAppear(){
-//
-//            if (fader1Value > 0) {
-//                conductor.start()
-//
-//            }
-//            else {
-//                conductor.stop()
-//            }}
-            
     }//view
+    
 }//struct
 
 struct ContentView_Previews: PreviewProvider {
@@ -177,7 +197,7 @@ struct ContentView_Previews: PreviewProvider {
 struct MyButtonStyle: ButtonStyle {
     @State var thirdHeight: CGFloat = UIScreen.main.bounds.height/3
     @State var thirdWidth: CGFloat = UIScreen.main.bounds.width/3
-
+    
     var background: some View {
         RoundedRectangle(cornerRadius: 50)
             .fill(Color.gray)
@@ -192,29 +212,5 @@ struct MyButtonStyle: ButtonStyle {
     }
 }
 
-class OscillatorConductor: ObservableObject, HasAudioEngine {
-    let engine = AudioEngine()
 
-//    func noteOn(pitch: Pitch, point _: CGPoint) {
-//        isPlaying = true
-//        //osc.frequency = AUValue(pitch.midiNoteNumber).midiNoteToFrequency()
-//
-//    }
-
-//    @Published var isPlaying: Bool = false {
-//        didSet { isPlaying ? osc.start() : osc.stop() }
-//    }
-
-    var osc = Oscillator()
-
-    init() {
-        osc.amplitude = 0.3//AUValue(fader1global * 100 )
-        print("Amplitude: \(osc.amplitude)")
-        osc.frequency = 440//Float(fader2global * 10000)
-        print("Frequency: \(osc.frequency)")
-        engine.output = osc
-
-    }
-    
-}
 

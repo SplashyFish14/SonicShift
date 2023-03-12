@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct AudioFilePlayBack: View {
+    struct AudioFileMenuView: View {
+            var body: some View {
+                AudioFIleMenu()
+        }
+    }
     var body: some View {
+        
         ZStack{
             RoundedRectangle(cornerRadius: 50)
                 .fill(Color.gray)
@@ -25,6 +31,8 @@ struct AudioFilePlayBack: View {
                     }
                     Button(action: {
                         print("Play")
+
+
                     }) {
                         Image(systemName: "play.fill")
                             .resizable()
@@ -43,18 +51,28 @@ struct AudioFilePlayBack: View {
                     }
                 }
                 .padding(.top, 10)
-                Button(action: {print("Audio File Menu")
-                    
-                }){
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 50)
-                            .padding(30)
-                            .foregroundColor(.black)
-                        Text("Audio file 1")
-                            .foregroundColor(.white)
-                            .font(.largeTitle)
-                    }
-                }
+                NavigationLink(destination: AudioFileMenuView()) { ZStack{
+                    RoundedRectangle(cornerRadius: 50)
+                        .padding(30)
+                        .foregroundColor(.black)
+                    Text("Audio file 1")
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                }}
+                
+//                Button(action: {
+//                    print("Audio File Menu")
+//
+//                }){
+//                    ZStack{
+//                        RoundedRectangle(cornerRadius: 50)
+//                            .padding(30)
+//                            .foregroundColor(.black)
+//                        Text("Audio file 1")
+//                            .foregroundColor(.white)
+//                            .font(.largeTitle)
+//                    }
+                
                 
                 
             }
@@ -65,5 +83,7 @@ struct AudioFilePlayBack: View {
 struct AudioFilePlayBack_Previews: PreviewProvider {
     static var previews: some View {
         AudioFilePlayBack()
+            .previewInterfaceOrientation(.landscapeLeft)
+
     }
 }
