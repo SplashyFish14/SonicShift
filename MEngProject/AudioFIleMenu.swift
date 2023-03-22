@@ -10,27 +10,18 @@ import SwiftUI
 struct AudioFIleMenu: View {
     @State var eightHeight: CGFloat = UIScreen.main.bounds.height/10
     @State var tenthWidth: CGFloat = UIScreen.main.bounds.width/10
-    @State var audioFiles: [String] = ["Audio File 1", "Audio File 2", "Audio File 3"]
+    var audioFiles: [AudioSamples]
+//    @State var audioFilePrettyNames: [String] = ["Audio File 1", "Audio File 2", "Audio File 3"]
+//    @State var audioFileNames: [String] = ["66319__oneloginacc__loop_98bpm_2bars.wav", "Audio File 2", "Audio File 3"]
+
     var body: some View {
         VStack{
             HStack{
-                HStack{}
-                    .frame(width:tenthWidth)
                 Text("Select Audio File")
                     .font(.largeTitle)
-                    .frame(width: tenthWidth*8-30)
-                Button ( action: {
-                    print("Audio Menu Close")
-                }){
-                    Image(systemName: "xmark.square.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .font(.largeTitle)
-                        .foregroundColor(Color.black)
-                }
-                .frame(width: tenthWidth)
+                    .frame(alignment: .center)
             }
-            .frame(width: UIScreen.main.bounds.width, height: eightHeight)
+            .frame(height: eightHeight)
             HStack{
 //                List{
 //
@@ -48,15 +39,72 @@ struct AudioFIleMenu: View {
 //                }
                 List{
                     
-                    ForEach(audioFiles, id: \.self) { (audioFiles: String) in
-                        VStack {
-                           Button(action: { print("Button at \(audioFiles)") }) {
-                               Text(audioFiles)
-                           }
-                           .buttonStyle(MyButtonStyle2())
+//                    ForEach(audioFiles) { items in
+//                        Button(action: {
+//                            fileSelected = items.songid
+//                            print(audioFileNames[fileSelected])
+//                        }){
+//                            Text(audioFilePrettyNames[items.songid])
+//                                .font(.title)
+//                                .fontWeight(.bold)
+//                        }
+//                        .buttonStyle(MyButtonStyle2())
+//                    }
+                    ForEach(audioFiles) { file in
+                        Button (action: {
+                            fileSelected = file.songid
+                            //print(audioFiles[fileSelected])
+                        }) {
+                            Text(file.fileName)
+                        }
+                    }
+                    
+//                    Button(action: {
+//                        fileSelected = 0
+//                        print(audioFileNames[fileSelected])
+//                    }){
+//                        Text(audioFilePrettyNames[0])
+//                            .font(.title)
+//                            .fontWeight(.bold)
+//                    }
+//                    .buttonStyle(MyButtonStyle2())
+//
+//                    Button(action: {
+//                        fileSelected = 1
+//                        print(audioFileNames[fileSelected])
+//                    }){
+//                        Text(audioFilePrettyNames[1])
+//                            .font(.title)
+//                            .fontWeight(.bold)
+//                    }
+//                    .buttonStyle(MyButtonStyle2())
+//
+//                    Button(action: {
+//                        fileSelected = 2
+//                        print(audioFileNames[fileSelected])
+//                    }){
+//                        Text(audioFilePrettyNames[2])
+//                            .font(.title)
+//                            .fontWeight(.bold)
+//                    }
+//                    .buttonStyle(MyButtonStyle2())
 
-                       }
-                   }
+                    
+                        
+                        
+//                        for i 1...3{
+//                            Button(label: audioFilePrettyNames[i], action:{
+//                                loadFiles(fileName: audioFileNames[i])
+//                            })
+    //                    ForEach(audioFilePrettyNames[i[], id: \.self) { (audioFiles: String) in
+    //                        VStack {
+    //                           Button(action: { print("Button at \(audioFiles)") }) {
+    //                               Text(audioFiles)
+    //                           }
+    //                           .buttonStyle(MyButtonStyle2())
+
+                       
+                   
                 }
             }
         }
@@ -79,10 +127,10 @@ struct MyButtonStyle2: ButtonStyle {
     
 }
 
-struct AudioFIleMenu_Previews: PreviewProvider {
-    static var previews: some View {
-        AudioFIleMenu()
-            .previewInterfaceOrientation(.landscapeLeft)
-
-    }
-}
+//struct AudioFIleMenu_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AudioFIleMenu()
+//            .previewInterfaceOrientation(.landscapeLeft)
+//
+//    }
+//}

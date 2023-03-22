@@ -15,33 +15,18 @@ import SoundpipeAudioKit
 import Tonic
 import DunneAudioKit
 
+//oscillator code
 class OscillatorConductor: ObservableObject, HasAudioEngine {
     let engine = AudioEngine()
-    
-    //    func noteOn(pitch: Pitch, point _: CGPoint) {
-    //        isPlaying = true
-    //        //osc.frequency = AUValue(pitch.midiNoteNumber).midiNoteToFrequency()
-    //
-    //    }
-    
-    //    @Published var isPlaying: Bool = false {
-    //        didSet { isPlaying ? osc.start() : osc.stop() }
-    //    }
-    
     var osc = Oscillator()
-//    @State var synth1 = Synth(masterVolume: AUValue(fader1global))
     init() {
         engine.output = osc
         try? engine.start()
-//        osc.start()
-        
         osc.amplitude = 0.3//AUValue(fader1global * 100 )
         print("Amplitude: \(osc.amplitude)")
         osc.frequency = 330//Float(fader2global * 10000)
         print("Frequency: \(osc.frequency)")
-        
     }
-    
 }
 
 struct ContentView: View {
@@ -56,10 +41,10 @@ struct ContentView: View {
     let motionManager = CMMotionManager()
     let motionManagerDM = CMMotionManager()
     
-    //    @State var fader1Value: CGFloat = fader1global
-    @State var fader2Value: CGFloat = fader2global
-    
     @StateObject var conductor = OscillatorConductor()
+    @State var oscOn: Bool = false
+    
+    @State private var isShowingSelectInstrumentMenu = false
     
     
     var body: some View {
@@ -70,11 +55,18 @@ struct ContentView: View {
             VStack(alignment: .center, spacing: 15) {
                 VStack(alignment: .center){
                     HStack {
-                        
+                        //Instrument Menu button
+                        //Currently starts oscillator
                         Button(action: {
                             print("Instrument")
-                            conductor.osc.start()
-                            
+                            isShowingSelectInstrumentMenu.toggle()
+//                            if oscOn == false {
+//                                conductor.osc.start()
+//                                oscOn = true
+//                            } else {
+//                                conductor.osc.stop()
+//                                oscOn = false
+//                            }
                         }){
                             VStack{
                                 Image(systemName: "pianokeys.inverse")
@@ -90,8 +82,9 @@ struct ContentView: View {
                         }
                         .buttonStyle(MyButtonStyle())
                         .frame(width: thirdWidth - 20)
-                        
-                        
+                        .sheet(isPresented: $isShowingSelectInstrumentMenu, onDismiss: instrumentDidDismiss){
+                            SelectInstrument()}
+                        //Effects menu button
                         Button(action: {
                             print("Effects")
                         }){
@@ -108,6 +101,7 @@ struct ContentView: View {
                         .buttonStyle(MyButtonStyle())
                         .frame(width: thirdWidth - 20)
                         
+                        //Settings menu button
                         Button(action: {
                             print("Settings")
                         }){
@@ -130,53 +124,42 @@ struct ContentView: View {
                     .frame(height: thirdHeight - 30)
                 
                     HStack {
-                        
+                        //Left fader
                         Fader()
                             .frame(width: sixthWidth)
-                        //conductor.osc.amplitude = Float(fader1Value)
                         
                         VStack{
                             HStack {
+                                //1st arc knob
                                 ArcKnob("Vol", value: $volValue)
                                     .foregroundColor(Color.black)
                                     .frame(height: thirdHeight - 20)
-                                
+                                //2nd arc knob
                                 ArcKnob("Reverb", value: $revValue)
                                     .foregroundColor(Color.black)
                                     .frame(height: thirdHeight - 20)
-                                
                             }
+                            //Playback section
                             AudioFilePlayBack()
                                 .frame(height: thirdHeight)
-                            
                         }
+                        //Right fader
                         Fader2()
                             .frame(width: sixthWidth)
-                        
-                        //conductor.osc.frequency = Float(fader1global)
-                        
                     }
-                    
                 }
             }
+            //Motion manager updates, and oscillator updates
             .onAppear(){
-               
-                
-//                if (fader1global > 0) {
-//                    conductor.start()
-//                    conductor.osc.start()
-//                }
-//                else {
-//                    conductor.stop()
-//                }
+                conductor.osc.start()
                 motionManagerDM.startDeviceMotionUpdates(to: OperationQueue.main) {
                     (data, error) in
                     if let deviceData = motionManagerDM.deviceMotion {
 //                        print("pitch: \(deviceData.attitude.pitch)  roll: \(deviceData.attitude.roll) yaw: \(deviceData.attitude.yaw)")
-                        conductor.osc.amplitude = AUValue(fader1global * 10)
-                        print("Amplitude: \(conductor.osc.amplitude)")
-                        conductor.osc.frequency = AUValue((deviceData.attitude.pitch) * 1000)
-                        print("Frequency: \(conductor.osc.frequency)")
+                        conductor.osc.amplitude = AUValue(fader1global)
+//                        print("Amplitude: \(conductor.osc.amplitude)")
+                        conductor.osc.frequency = AUValue((deviceData.attitude.pitch + 1.56) * 500)
+//                        print("Frequency: \(conductor.osc.frequency)")
                         
                     }
                 }
@@ -184,7 +167,9 @@ struct ContentView: View {
         }
         .padding(.all, 30.0)
     }//view
-    
+    func instrumentDidDismiss(){
+        isShowingSelectInstrumentMenu = false
+    }
 }//struct
 
 struct ContentView_Previews: PreviewProvider {
@@ -194,6 +179,7 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+//Button styling
 struct MyButtonStyle: ButtonStyle {
     @State var thirdHeight: CGFloat = UIScreen.main.bounds.height/3
     @State var thirdWidth: CGFloat = UIScreen.main.bounds.width/3

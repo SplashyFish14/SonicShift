@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		007B2F3629C31F240069C947 /* AudioKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = 007B2F3529C31F240069C947 /* AudioKitUI */; };
+		007B2F4529CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 007B2F4229CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 */; };
+		007B2F4629CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 007B2F4329CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 */; };
+		007B2F4729CB120B0069C947 /* 320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 007B2F4429CB120B0069C947 /* 320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3 */; };
 		007CE94729BA73A100BF867D /* AudioFIleMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007CE94629BA73A100BF867D /* AudioFIleMenu.swift */; };
 		0082BCA429A1679E00DD07EE /* Fader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BCA329A1679E00DD07EE /* Fader.swift */; };
 		0082BCA829A63F9600DD07EE /* SelectInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BCA729A63F9600DD07EE /* SelectInstrument.swift */; };
@@ -18,12 +22,14 @@
 		00E4A4B329A011CD0047C1E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A4B229A011CD0047C1E0 /* Assets.xcassets */; };
 		00E4A4B629A011CD0047C1E0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A4B529A011CD0047C1E0 /* Preview Assets.xcassets */; };
 		00E4A4BE29A013160047C1E0 /* AudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 00E4A4BD29A013160047C1E0 /* AudioKit */; };
-		00E4A4C129A0133C0047C1E0 /* AudioKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = 00E4A4C029A0133C0047C1E0 /* AudioKitUI */; };
 		00E4A4C429A0135B0047C1E0 /* DunneAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 00E4A4C329A0135B0047C1E0 /* DunneAudioKit */; };
 		00E4A4C729A013760047C1E0 /* SoundpipeAudioKit in Frameworks */ = {isa = PBXBuildFile; productRef = 00E4A4C629A013760047C1E0 /* SoundpipeAudioKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		007B2F4229CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 66319__oneloginacc__loop_98bpm_2bars.mp3; sourceTree = "<group>"; };
+		007B2F4329CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3"; sourceTree = "<group>"; };
+		007B2F4429CB120B0069C947 /* 320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3"; sourceTree = "<group>"; };
 		007CE94629BA73A100BF867D /* AudioFIleMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFIleMenu.swift; sourceTree = "<group>"; };
 		0082BCA329A1679E00DD07EE /* Fader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fader.swift; sourceTree = "<group>"; };
 		0082BCA729A63F9600DD07EE /* SelectInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInstrument.swift; sourceTree = "<group>"; };
@@ -41,8 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E4A4C129A0133C0047C1E0 /* AudioKitUI in Frameworks */,
 				00E4A4BE29A013160047C1E0 /* AudioKit in Frameworks */,
+				007B2F3629C31F240069C947 /* AudioKitUI in Frameworks */,
 				00E4A4C729A013760047C1E0 /* SoundpipeAudioKit in Frameworks */,
 				0082BCAB29B0C59A00DD07EE /* Tonic in Frameworks */,
 				00E4A4C429A0135B0047C1E0 /* DunneAudioKit in Frameworks */,
@@ -52,11 +58,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		007B2F3429C31F240069C947 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		007B2F3729C488E90069C947 /* AudioFiles */ = {
+			isa = PBXGroup;
+			children = (
+				007B2F4229CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 */,
+				007B2F4329CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 */,
+				007B2F4429CB120B0069C947 /* 320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3 */,
+			);
+			path = AudioFiles;
+			sourceTree = "<group>";
+		};
 		00E4A4A229A011CC0047C1E0 = {
 			isa = PBXGroup;
 			children = (
 				00E4A4AD29A011CD0047C1E0 /* MEngProject */,
 				00E4A4AC29A011CD0047C1E0 /* Products */,
+				007B2F3429C31F240069C947 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +95,7 @@
 		00E4A4AD29A011CD0047C1E0 /* MEngProject */ = {
 			isa = PBXGroup;
 			children = (
+				007B2F3729C488E90069C947 /* AudioFiles */,
 				00E4A4AE29A011CD0047C1E0 /* MEngProjectApp.swift */,
 				00E4A4B029A011CD0047C1E0 /* ContentView.swift */,
 				00E4A4B229A011CD0047C1E0 /* Assets.xcassets */,
@@ -110,10 +135,10 @@
 			name = MEngProject;
 			packageProductDependencies = (
 				00E4A4BD29A013160047C1E0 /* AudioKit */,
-				00E4A4C029A0133C0047C1E0 /* AudioKitUI */,
 				00E4A4C329A0135B0047C1E0 /* DunneAudioKit */,
 				00E4A4C629A013760047C1E0 /* SoundpipeAudioKit */,
 				0082BCAA29B0C59A00DD07EE /* Tonic */,
+				007B2F3529C31F240069C947 /* AudioKitUI */,
 			);
 			productName = MEngProject;
 			productReference = 00E4A4AB29A011CD0047C1E0 /* MEngProject.app */;
@@ -164,8 +189,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				007B2F4629CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 in Resources */,
 				00E4A4B629A011CD0047C1E0 /* Preview Assets.xcassets in Resources */,
+				007B2F4729CB120B0069C947 /* 320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3 in Resources */,
 				00E4A4B329A011CD0047C1E0 /* Assets.xcassets in Resources */,
+				007B2F4529CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +342,7 @@
 				DEVELOPMENT_TEAM = R3Q2HP4BK8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SonicShift;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -343,6 +372,7 @@
 				DEVELOPMENT_TEAM = R3Q2HP4BK8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SonicShift;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -428,6 +458,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		007B2F3529C31F240069C947 /* AudioKitUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 00E4A4BF29A0133C0047C1E0 /* XCRemoteSwiftPackageReference "AudioKitUI" */;
+			productName = AudioKitUI;
+		};
 		0082BCAA29B0C59A00DD07EE /* Tonic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0082BCA929B0C59A00DD07EE /* XCRemoteSwiftPackageReference "Tonic" */;
@@ -437,11 +472,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 00E4A4BC29A013160047C1E0 /* XCRemoteSwiftPackageReference "AudioKit" */;
 			productName = AudioKit;
-		};
-		00E4A4C029A0133C0047C1E0 /* AudioKitUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 00E4A4BF29A0133C0047C1E0 /* XCRemoteSwiftPackageReference "AudioKitUI" */;
-			productName = AudioKitUI;
 		};
 		00E4A4C329A0135B0047C1E0 /* DunneAudioKit */ = {
 			isa = XCSwiftPackageProductDependency;
