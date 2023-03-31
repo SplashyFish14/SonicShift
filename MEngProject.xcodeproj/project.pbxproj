@@ -17,6 +17,9 @@
 		0082BCAB29B0C59A00DD07EE /* Tonic in Frameworks */ = {isa = PBXBuildFile; productRef = 0082BCAA29B0C59A00DD07EE /* Tonic */; };
 		0082BCAD29B0CAA300DD07EE /* Fader2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BCAC29B0CAA300DD07EE /* Fader2.swift */; };
 		0082BCAF29B238AD00DD07EE /* AudioFilePlayBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0082BCAE29B238AD00DD07EE /* AudioFilePlayBack.swift */; };
+		008B811829D5A29500E15A61 /* hop1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 008B811529D5A29500E15A61 /* hop1.mp3 */; };
+		008B811929D5A29500E15A61 /* 395037__kodack__simple-relaxing-guitar-loop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 008B811629D5A29500E15A61 /* 395037__kodack__simple-relaxing-guitar-loop.mp3 */; };
+		008B811A29D5A29500E15A61 /* 187471__minecast__simple-loopable-beat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 008B811729D5A29500E15A61 /* 187471__minecast__simple-loopable-beat.mp3 */; };
 		00E4A4AF29A011CD0047C1E0 /* MEngProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A4AE29A011CD0047C1E0 /* MEngProjectApp.swift */; };
 		00E4A4B129A011CD0047C1E0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A4B029A011CD0047C1E0 /* ContentView.swift */; };
 		00E4A4B329A011CD0047C1E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A4B229A011CD0047C1E0 /* Assets.xcassets */; };
@@ -35,6 +38,9 @@
 		0082BCA729A63F9600DD07EE /* SelectInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInstrument.swift; sourceTree = "<group>"; };
 		0082BCAC29B0CAA300DD07EE /* Fader2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fader2.swift; sourceTree = "<group>"; };
 		0082BCAE29B238AD00DD07EE /* AudioFilePlayBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFilePlayBack.swift; sourceTree = "<group>"; };
+		008B811529D5A29500E15A61 /* hop1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hop1.mp3; sourceTree = "<group>"; };
+		008B811629D5A29500E15A61 /* 395037__kodack__simple-relaxing-guitar-loop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "395037__kodack__simple-relaxing-guitar-loop.mp3"; sourceTree = "<group>"; };
+		008B811729D5A29500E15A61 /* 187471__minecast__simple-loopable-beat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "187471__minecast__simple-loopable-beat.mp3"; sourceTree = "<group>"; };
 		00E4A4AB29A011CD0047C1E0 /* MEngProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEngProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E4A4AE29A011CD0047C1E0 /* MEngProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MEngProjectApp.swift; sourceTree = "<group>"; };
 		00E4A4B029A011CD0047C1E0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +74,9 @@
 		007B2F3729C488E90069C947 /* AudioFiles */ = {
 			isa = PBXGroup;
 			children = (
+				008B811729D5A29500E15A61 /* 187471__minecast__simple-loopable-beat.mp3 */,
+				008B811629D5A29500E15A61 /* 395037__kodack__simple-relaxing-guitar-loop.mp3 */,
+				008B811529D5A29500E15A61 /* hop1.mp3 */,
 				007B2F4229CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 */,
 				007B2F4329CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 */,
 				007B2F4429CB120B0069C947 /* 320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3 */,
@@ -191,8 +200,11 @@
 			files = (
 				007B2F4629CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 in Resources */,
 				00E4A4B629A011CD0047C1E0 /* Preview Assets.xcassets in Resources */,
+				008B811A29D5A29500E15A61 /* 187471__minecast__simple-loopable-beat.mp3 in Resources */,
+				008B811829D5A29500E15A61 /* hop1.mp3 in Resources */,
 				007B2F4729CB120B0069C947 /* 320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3 in Resources */,
 				00E4A4B329A011CD0047C1E0 /* Assets.xcassets in Resources */,
+				008B811929D5A29500E15A61 /* 395037__kodack__simple-relaxing-guitar-loop.mp3 in Resources */,
 				007B2F4529CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
