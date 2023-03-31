@@ -20,7 +20,8 @@ struct SelectInstrument: View {
                 
                 Text("Select Instrument")
                     .font(.largeTitle)
-                    .bold()
+                    .frame(alignment: .center)
+            
             }
             .frame(height: eightHeight)
             .padding(20)
@@ -29,42 +30,42 @@ struct SelectInstrument: View {
                 Grid{
                     GridRow{
                         Button(action: {
-                            print("Instrument")
+                            print("Instrument 1")
                         }){
                             VStack{
                                 Image(systemName: "pianokeys.inverse")
                                     .font(.largeTitle)
                                     .foregroundColor(Color.black)
                                 
-                                Text("Instrument")
+                                Text("Instrument 1")
                                     .font(.title)
                                     .fontWeight(.bold)
                             }
                         }
                         .buttonStyle(MyButtonStyleInstrument())
                         Button(action: {
-                            print("Instrument")
+                            print("Instrument 2")
                         }){
                             VStack{
                                 Image(systemName: "pianokeys.inverse")
                                     .font(.largeTitle)
                                     .foregroundColor(Color.black)
                                 
-                                Text("Instrument")
+                                Text("Instrument 2")
                                     .font(.title)
                                     .fontWeight(.bold)
                             }
                         }
                         .buttonStyle(MyButtonStyleInstrument())
                         Button(action: {
-                            print("Instrument")
+                            print("Instrument 3")
                         }){
                             VStack{
                                 Image(systemName: "pianokeys.inverse")
                                     .font(.largeTitle)
                                     .foregroundColor(Color.black)
                                 
-                                Text("Instrument")
+                                Text("Instrument 3")
                                     .font(.title)
                                     .fontWeight(.bold)
                             }

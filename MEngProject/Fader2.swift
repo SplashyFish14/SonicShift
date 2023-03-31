@@ -69,9 +69,9 @@ struct Home2: View {
                 let progress = sliderHeight / maxHeight
                 
                 sliderProgress = progress <= 1.0 ? progress : 1
-                print("slider 2 progress \(sliderProgress)")
+//                print("slider 2 progress \(sliderProgress)")
                 fader2global = sliderProgress
-                print("fader 2 global \(fader2global)")
+//                print("fader 2 global \(fader2global)")
 
                 
             }).onEnded({(value) in

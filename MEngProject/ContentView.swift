@@ -45,7 +45,8 @@ struct ContentView: View {
     @State var oscOn: Bool = false
     
     @State private var isShowingSelectInstrumentMenu = false
-    
+    @State private var isShowingAudioEffectsMenu = false
+    @State private var isShowingSettingsMenu = false
     
     var body: some View {
         
@@ -87,6 +88,7 @@ struct ContentView: View {
                         //Effects menu button
                         Button(action: {
                             print("Effects")
+                            isShowingAudioEffectsMenu.toggle()
                         }){
                             VStack{
                                 Image(systemName: "slider.vertical.3")
@@ -100,10 +102,12 @@ struct ContentView: View {
                         }
                         .buttonStyle(MyButtonStyle())
                         .frame(width: thirdWidth - 20)
-                        
+                        .sheet(isPresented: $isShowingAudioEffectsMenu, onDismiss: effectsDidDismiss){
+                            AudioEffectsMenu()}
                         //Settings menu button
                         Button(action: {
                             print("Settings")
+                            isShowingSettingsMenu.toggle()
                         }){
                             VStack{
                                 Image(systemName: "gearshape.fill")
@@ -118,7 +122,8 @@ struct ContentView: View {
                         }
                         .buttonStyle(MyButtonStyle())
                         .frame(width: thirdWidth - 20)
-                        
+                        .sheet(isPresented: $isShowingSettingsMenu, onDismiss: settingsDidDismiss){
+                            SettingsMenu()}
                     }
                     .padding(.top, 10.0)
                     .frame(height: thirdHeight - 30)
@@ -169,6 +174,12 @@ struct ContentView: View {
     }//view
     func instrumentDidDismiss(){
         isShowingSelectInstrumentMenu = false
+    }
+    func effectsDidDismiss(){
+        isShowingAudioEffectsMenu = false
+    }
+    func settingsDidDismiss(){
+        isShowingSettingsMenu = false
     }
 }//struct
 
