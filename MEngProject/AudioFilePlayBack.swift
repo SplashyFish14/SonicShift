@@ -187,6 +187,7 @@ struct AudioFilePlayBack: View {
     }
     func didDismiss(){
         isShowingAudioFileMenu = false
+        update.toggle()
     }
 }
 

@@ -12,12 +12,29 @@ struct AudioEffectsMenu: View {
     
     var body: some View {
         VStack{
-            HStack{
+            ZStack{
                 Text("Select Audio Effects")
                     .font(.largeTitle)
                     .frame(alignment: .center)
             }
             .frame(height: eightHeight)
+            HStack{
+                VStack{
+                    Text("Select Effect 1")
+                        .font(.title)
+                        
+                    List{
+                        Text("Effect 1")
+                    }
+                }
+                VStack{
+                    Text("Select Effect 1")
+                        .font(.title)
+                    List{
+                        Text("Effect 1")
+                    }
+                }
+            }
         }
         
     }

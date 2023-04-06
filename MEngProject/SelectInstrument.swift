@@ -12,7 +12,7 @@ struct SelectInstrument: View {
     @State var tenthWidth: CGFloat = UIScreen.main.bounds.width/10
     @State var thirdWidth: CGFloat = UIScreen.main.bounds.width/3
     
-    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+//    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     var body: some View {
         VStack{
@@ -57,24 +57,68 @@ struct SelectInstrument: View {
                             }
                         }
                         .buttonStyle(MyButtonStyleInstrument())
+//                        Button(action: {
+//                            print("Instrument 3")
+//                        }){
+//                            VStack{
+//                                Image(systemName: "pianokeys.inverse")
+//                                    .font(.largeTitle)
+//                                    .foregroundColor(Color.black)
+//
+//                                Text("Instrument 3")
+//                                    .font(.title)
+//                                    .fontWeight(.bold)
+//                            }
+//                        }
+//                        .buttonStyle(MyButtonStyleInstrument())
+                    }
+//                    .padding(.leading, 10)
+//                    .padding(.trailing, 10)
+                    
+                    GridRow {
                         Button(action: {
-                            print("Instrument 3")
+                            print("Instrument 4")
                         }){
                             VStack{
                                 Image(systemName: "pianokeys.inverse")
                                     .font(.largeTitle)
                                     .foregroundColor(Color.black)
                                 
-                                Text("Instrument 3")
+                                Text("Instrument 4")
                                     .font(.title)
                                     .fontWeight(.bold)
                             }
                         }
                         .buttonStyle(MyButtonStyleInstrument())
-                        
+                        Button(action: {
+                            print("Instrument 5")
+                        }){
+                            VStack{
+                                Image(systemName: "pianokeys.inverse")
+                                    .font(.largeTitle)
+                                    .foregroundColor(Color.black)
+                                
+                                Text("Instrument 5")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                            }
+                        }
+                        .buttonStyle(MyButtonStyleInstrument())
+//                        Button(action: {
+//                            print("Instrument 6")
+//                        }){
+//                            VStack{
+//                                Image(systemName: "pianokeys.inverse")
+//                                    .font(.largeTitle)
+//                                    .foregroundColor(Color.black)
+//
+//                                Text("Instrument 6")
+//                                    .font(.title)
+//                                    .fontWeight(.bold)
+//                            }
+//                        }
+//                        .buttonStyle(MyButtonStyleInstrument())
                     }
-                    .padding(.leading, 10)
-                    .padding(.trailing, 10)
                 }
                 .padding(.top, 25)
                 
@@ -94,12 +138,12 @@ struct SelectInstrument_Previews: PreviewProvider {
 
 struct MyButtonStyleInstrument: ButtonStyle {
     @State var thirdHeight: CGFloat = UIScreen.main.bounds.height/3
-    @State var sixthWidth: CGFloat = UIScreen.main.bounds.width/6
+    @State var fourthWidth: CGFloat = UIScreen.main.bounds.width/4
     
     var background: some View {
-        RoundedRectangle(cornerRadius: 50)
+        RoundedRectangle(cornerRadius: 20)
             .foregroundColor(Color.gray)
-            .frame(width: sixthWidth, height: 150)
+//            .frame(width: fourthWidth, height: 100)
     }
     
     func makeBody(configuration: Configuration) -> some View {

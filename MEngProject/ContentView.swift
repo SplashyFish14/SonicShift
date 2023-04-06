@@ -57,17 +57,10 @@ struct ContentView: View {
                 VStack(alignment: .center){
                     HStack {
                         //Instrument Menu button
-                        //Currently starts oscillator
                         Button(action: {
                             print("Instrument")
                             isShowingSelectInstrumentMenu.toggle()
-//                            if oscOn == false {
-//                                conductor.osc.start()
-//                                oscOn = true
-//                            } else {
-//                                conductor.osc.stop()
-//                                oscOn = false
-//                            }
+
                         }){
                             VStack{
                                 Image(systemName: "pianokeys.inverse")
