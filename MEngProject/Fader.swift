@@ -34,10 +34,10 @@ struct Home: View {
             ZStack(alignment: .bottom, content: {
                 
                 Rectangle()
-                    .fill(Color.green).opacity((0.30))
+                    .fill(CustomPaleBlue)
                     
                 Rectangle()
-                    .fill(Color.orange)
+                    .fill(CustomPurple)
                     .frame(height: sliderHeight)
                     .cornerRadius(49)
             })

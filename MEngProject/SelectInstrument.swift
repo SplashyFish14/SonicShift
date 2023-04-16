@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SelectInstrument: View {
-    @State var eightHeight: CGFloat = UIScreen.main.bounds.height/10
+    @State var eighthHeight: CGFloat = UIScreen.main.bounds.height/10
     @State var tenthWidth: CGFloat = UIScreen.main.bounds.width/10
     @State var thirdWidth: CGFloat = UIScreen.main.bounds.width/3
     
@@ -17,112 +17,173 @@ struct SelectInstrument: View {
     var body: some View {
         VStack{
             ZStack{
-                
                 Text("Select Instrument")
                     .font(.largeTitle)
                     .frame(alignment: .center)
-            
             }
-            .frame(height: eightHeight)
+            .frame(height: eighthHeight)
             .padding(20)
-            
-            ScrollView{
-                Grid{
-                    GridRow{
-                        Button(action: {
-                            print("Instrument 1")
-                        }){
-                            VStack{
-                                Image(systemName: "pianokeys.inverse")
-                                    .font(.largeTitle)
-                                    .foregroundColor(Color.black)
-                                
-                                Text("Instrument 1")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                            }
-                        }
-                        .buttonStyle(MyButtonStyleInstrument())
-                        Button(action: {
-                            print("Instrument 2")
-                        }){
-                            VStack{
-                                Image(systemName: "pianokeys.inverse")
-                                    .font(.largeTitle)
-                                    .foregroundColor(Color.black)
-                                
-                                Text("Instrument 2")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                            }
-                        }
-                        .buttonStyle(MyButtonStyleInstrument())
-//                        Button(action: {
-//                            print("Instrument 3")
-//                        }){
-//                            VStack{
-//                                Image(systemName: "pianokeys.inverse")
-//                                    .font(.largeTitle)
-//                                    .foregroundColor(Color.black)
-//
-//                                Text("Instrument 3")
-//                                    .font(.title)
-//                                    .fontWeight(.bold)
-//                            }
-//                        }
-//                        .buttonStyle(MyButtonStyleInstrument())
-                    }
-//                    .padding(.leading, 10)
-//                    .padding(.trailing, 10)
-                    
-                    GridRow {
-                        Button(action: {
-                            print("Instrument 4")
-                        }){
-                            VStack{
-                                Image(systemName: "pianokeys.inverse")
-                                    .font(.largeTitle)
-                                    .foregroundColor(Color.black)
-                                
-                                Text("Instrument 4")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                            }
-                        }
-                        .buttonStyle(MyButtonStyleInstrument())
-                        Button(action: {
-                            print("Instrument 5")
-                        }){
-                            VStack{
-                                Image(systemName: "pianokeys.inverse")
-                                    .font(.largeTitle)
-                                    .foregroundColor(Color.black)
-                                
-                                Text("Instrument 5")
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                            }
-                        }
-                        .buttonStyle(MyButtonStyleInstrument())
-//                        Button(action: {
-//                            print("Instrument 6")
-//                        }){
-//                            VStack{
-//                                Image(systemName: "pianokeys.inverse")
-//                                    .font(.largeTitle)
-//                                    .foregroundColor(Color.black)
-//
-//                                Text("Instrument 6")
-//                                    .font(.title)
-//                                    .fontWeight(.bold)
-//                            }
-//                        }
-//                        .buttonStyle(MyButtonStyleInstrument())
+
+            HStack{
+                Spacer()
+                Button(action: {
+                    print("Instrument 1")
+                }){
+                    VStack{
+                        Image(systemName: "pianokeys.inverse")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.white)
+
+                        Text("Instrument 1")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
                     }
                 }
-                .padding(.top, 25)
-                
+                .buttonStyle(MyButtonStyleInstrument())
+                Spacer()
+                Button(action: {
+                    print("Instrument 2")
+                }){
+                    VStack{
+                        Image(systemName: "pianokeys.inverse")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.white)
+
+                        Text("Instrument 2")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+
+                    }
+                }
+                .buttonStyle(MyButtonStyleInstrument())
+                Spacer()
+                Button(action: {
+                    print("Instrument 3")
+                }){
+                    VStack{
+                        Image(systemName: "pianokeys.inverse")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.white)
+
+                        Text("Instrument 3")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+
+                    }
+                }
+                .buttonStyle(MyButtonStyleInstrument())
+                Spacer()
             }
+            .padding(.top, 25)
+            Spacer()
+            HStack{
+                Spacer()
+                Button(action: {
+                    print("Instrument 4")
+                }){
+                    VStack{
+                        Image(systemName: "pianokeys.inverse")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.white)
+
+                        Text("Instrument 4")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+}
+                }
+                .buttonStyle(MyButtonStyleInstrument())
+                Spacer()
+                Button(action: {
+                    print("Instrument 5")
+                }){
+                    VStack{
+                        Image(systemName: "pianokeys.inverse")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.white)
+
+                        Text("Instrument 5")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+}
+                }
+                .buttonStyle(MyButtonStyleInstrument())
+                Spacer()
+                Button(action: {
+                    print("Instrument 6")
+                }){
+                    VStack{
+                        Image(systemName: "pianokeys.inverse")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.white)
+
+                        Text("Instrument 6")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+}
+                }
+                .buttonStyle(MyButtonStyleInstrument())
+                Spacer()
+            }
+            Spacer()
+            HStack{
+                Spacer()
+                Button(action: {
+                    print("Instrument 7")
+                }){
+                    VStack{
+                        Image(systemName: "pianokeys.inverse")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.white)
+
+                        Text("Instrument 7")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+}
+                }
+                .buttonStyle(MyButtonStyleInstrument())
+                Spacer()
+                Button(action: {
+                    print("Instrument 8")
+                }){
+                    VStack{
+                        Image(systemName: "pianokeys.inverse")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.white)
+
+                        Text("Instrument 8")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+}
+                }
+                .buttonStyle(MyButtonStyleInstrument())
+                Spacer()
+                Button(action: {
+                    print("Instrument 9")
+                }){
+                    VStack{
+                        Image(systemName: "pianokeys.inverse")
+                            .font(.largeTitle)
+                            .foregroundColor(Color.white)
+
+                        Text("Instrument 9")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.white)
+}
+                }
+                .buttonStyle(MyButtonStyleInstrument())
+                Spacer()
+
+            }
+            Spacer()
         }
     }
 }
@@ -138,12 +199,12 @@ struct SelectInstrument_Previews: PreviewProvider {
 
 struct MyButtonStyleInstrument: ButtonStyle {
     @State var thirdHeight: CGFloat = UIScreen.main.bounds.height/3
-    @State var fourthWidth: CGFloat = UIScreen.main.bounds.width/4
+    @State var fifthWidth: CGFloat = UIScreen.main.bounds.width/5.5
     
     var background: some View {
         RoundedRectangle(cornerRadius: 20)
-            .foregroundColor(Color.gray)
-//            .frame(width: fourthWidth, height: 100)
+            .foregroundColor(CustomGreen)
+            .frame(width: fifthWidth, height: 160)
     }
     
     func makeBody(configuration: Configuration) -> some View {

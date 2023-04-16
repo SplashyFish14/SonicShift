@@ -30,6 +30,8 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
 }
 
 struct ContentView: View {
+    @EnvironmentObject var fader2: PlayBackClass
+    
     @State var sliderValue: Float = 0
     @State var volValue: Float = 0
     @State var revValue: Float = 0
@@ -67,11 +69,12 @@ struct ContentView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .font(.largeTitle)
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(Color.white)
                                 
                                 Text("Instrument")
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
+                                    .foregroundColor(Color.white)
                             }
                         }
                         .buttonStyle(MyButtonStyle())
@@ -87,10 +90,11 @@ struct ContentView: View {
                                 Image(systemName: "slider.vertical.3")
                                     .resizable()
                                     .scaledToFit()
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(Color.white)
                                 Text("Effects")
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
+                                    .foregroundColor(Color.white)
                             }
                         }
                         .buttonStyle(MyButtonStyle())
@@ -107,10 +111,11 @@ struct ContentView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .font(.largeTitle)
-                                    .foregroundColor(Color.black)
+                                    .foregroundColor(Color.white)
                                 Text("Settings")
                                     .font(.largeTitle)
                                     .fontWeight(.bold)
+                                    .foregroundColor(Color.white)
                             }
                         }
                         .buttonStyle(MyButtonStyle())
@@ -129,21 +134,23 @@ struct ContentView: View {
                         VStack{
                             HStack {
                                 //1st arc knob
-                                ArcKnob("Vol", value: $volValue)
-                                    .foregroundColor(Color.black)
+                                ArcKnob("Effect", value: $volValue)
+                                    .foregroundColor(CustomYellow)
                                     .frame(height: thirdHeight - 20)
                                 //2nd arc knob
-                                ArcKnob("Reverb", value: $revValue)
-                                    .foregroundColor(Color.black)
+                                ArcKnob("Effect", value: $revValue)
+                                    .foregroundColor(CustomYellow)
                                     .frame(height: thirdHeight - 20)
                             }
                             //Playback section
                             AudioFilePlayBack()
                                 .frame(height: thirdHeight)
+                                .environmentObject(PlayBackClass())
                         }
                         //Right fader
                         Fader2()
                             .frame(width: sixthWidth)
+                            .environmentObject(PlayBackClass())
                     }
                 }
             }
@@ -155,6 +162,7 @@ struct ContentView: View {
                     if let deviceData = motionManagerDM.deviceMotion {
 //                        print("pitch: \(deviceData.attitude.pitch)  roll: \(deviceData.attitude.roll) yaw: \(deviceData.attitude.yaw)")
                         conductor.osc.amplitude = AUValue(fader1global)
+                        
 //                        print("Amplitude: \(conductor.osc.amplitude)")
                         conductor.osc.frequency = AUValue((deviceData.attitude.pitch + 1.56) * 500)
 //                        print("Frequency: \(conductor.osc.frequency)")
@@ -190,7 +198,7 @@ struct MyButtonStyle: ButtonStyle {
     
     var background: some View {
         RoundedRectangle(cornerRadius: 50)
-            .fill(Color.gray)
+            .fill(CustomPurple)
             .frame(width: (thirdWidth - 30), height: (thirdHeight - 40))
     }
     

@@ -31,10 +31,10 @@ struct AudioFIleMenu: View {
                             Text(file.name)
                         
                         }
-                        .frame(width: UIScreen.main.bounds.width, alignment: .center)
+                        .frame(width: 1000, height: 50)
                         .buttonStyle(MyButtonStyle2())
                     }
-                    .listRowBackground(Color.gray)
+                    .listRowBackground(CustomPaleGreen)
                 }
             }
         }
@@ -43,10 +43,10 @@ struct AudioFIleMenu: View {
 struct MyButtonStyle2: ButtonStyle {
     
     var background: some View {
-        Color.gray
-//        RoundedRectangle(cornerRadius: 30)
-//            .fill(Color.gray)
-            .frame(width: (UIScreen.main.bounds.width), height:(80))
+//        Color.gray
+        RoundedRectangle(cornerRadius: 20)
+            .fill(CustomGreen)
+            .frame(width: (500), height:(80))
 
     }
     

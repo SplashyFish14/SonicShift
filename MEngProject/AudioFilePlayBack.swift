@@ -29,31 +29,34 @@ struct AudioSamples: Identifiable {
     var songid: Int
 }
 
-class PlayBackClass: ObservableObject {
-    let playBackEngine = AudioEngine()
-    var audio = AudioPlayer()
-
-    init(){
-        playBackEngine.output = audio
-        try? playBackEngine.start()
-    }
-
-    func loadFiles(fileName: String){
-        do {
-            if let file = Bundle.main.url(forResource: fileName, withExtension: "mp3")
-            {
-                try audio.load(url: file)
-            } else {
-                Log("Could not find file")
-            }
-        } catch {
-            Log("Could not load track")
-        }
-    }
-}
+//class PlayBackClass: ObservableObject {
+//    let playBackEngine = AudioEngine()
+//    @Published var audio = AudioPlayer()
+//    @Published var trackVolumeFader: CGFloat = 0.0
+//    init(){
+//        playBackEngine.output = audio
+//        try? playBackEngine.start()
+//        audio.volume = AUValue(trackVolumeFader)
+//    }
+//
+//    func loadFiles(fileName: String){
+//        do {
+//            if let file = Bundle.main.url(forResource: fileName, withExtension: "mp3")
+//            {
+//                try audio.load(url: file)
+//            } else {
+//                Log("Could not find file")
+//            }
+//        } catch {
+//            Log("Could not load track")
+//        }
+//    }
+//}
 
 
 struct AudioFilePlayBack: View {
+    @EnvironmentObject var conductor: PlayBackClass
+    
     struct AudioFileMenuView: View {
             var body: some View {
                 AudioFIleMenu(audioFiles: audioFiles)
@@ -61,7 +64,7 @@ struct AudioFilePlayBack: View {
     }
     @State private var isShowingAudioFileMenu = false
     @State var  isPlaying: Bool = false
-    @StateObject var conductor = PlayBackClass()
+    //@StateObject var conductor = PlayBackClass()
     @State var playbackImage = Image(systemName: "pause.fill")
     
     @State var maxAudioFiles = 6
@@ -69,11 +72,12 @@ struct AudioFilePlayBack: View {
     
     @State var selectedPrettyName = audioFiles[fileSelected - 1 ].name
     
+    
     var body: some View {
         
         ZStack{
             RoundedRectangle(cornerRadius: 50)
-                .fill(Color.gray)
+                .fill(CustomGreen)
             VStack{
                 HStack{
                     Button(action: {
@@ -94,19 +98,22 @@ struct AudioFilePlayBack: View {
                         Image(systemName: "chevron.backward.circle")
                             .resizable()
                             .scaledToFit()
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color.white)
                             .padding(10)
                     }
                     Button(action: {
                         print("Play")
+                        print("Volumesssssss: \(conductor.audio.volume)")
                         conductor.loadFiles(fileName: audioFiles[fileSelected - 1].fileName)
-                        conductor.audio.volume = AUValue(fader2global)
+                        //conductor.audio.volume = AUValue()
                         print("audio file loaded")
                         if isPlaying == false {
                             conductor.audio.isLooping = true
                             isPlaying.toggle()
                             print("Audio file start")
                             conductor.audio.play()
+                            
+                            //print("Volume: \(conductor.audio.volume)")
 
                         } else{
                             isPlaying.toggle()
@@ -120,19 +127,19 @@ struct AudioFilePlayBack: View {
                             Image(systemName: "pause.fill")
                                 .resizable()
                                 .scaledToFit()
-                                .foregroundColor(Color.black)
+                                .foregroundColor(Color.white)
                                 .padding(10)
                         } else {
                             Image(systemName: "play.fill")
                                 .resizable()
                                 .scaledToFit()
-                                .foregroundColor(Color.black)
+                                .foregroundColor(Color.white)
                                 .padding(10)
                         }
                         
                     }
                     Button(action: {
-                        print("foreward")
+                        print("forward")
                         if fileSelected < maxAudioFiles {
                             fileSelected = fileSelected + 1
 
@@ -151,7 +158,7 @@ struct AudioFilePlayBack: View {
                         Image(systemName: "chevron.forward.circle")
                             .resizable()
                             .scaledToFit()
-                            .foregroundColor(Color.black)
+                            .foregroundColor(Color.white)
                             .padding(10)
                     }
                 }
@@ -165,16 +172,17 @@ struct AudioFilePlayBack: View {
                     ZStack{
                         RoundedRectangle(cornerRadius: 50)
                             .padding(30)
-                            .foregroundColor(.black)
+                            .foregroundColor(Color.white)
                         if update == true{
                             Text(audioFiles[fileSelected - 1 ].name)
-                                .foregroundColor(.white)
-                                .font(.largeTitle)
+                                .foregroundColor(CustomPurple)
+                                .font(.largeTitle).bold()
                         } else {
                             Text(audioFiles[fileSelected - 1 ].name)
-                                .foregroundColor(.white)
-                                .font(.largeTitle)
+                                .foregroundColor(CustomPurple)
+                                .font(.largeTitle).bold()
                         }
+                        
                         
                     }
                     
@@ -195,6 +203,7 @@ struct AudioFilePlayBack_Previews: PreviewProvider {
     static var previews: some View {
         AudioFilePlayBack()
             .previewInterfaceOrientation(.landscapeLeft)
+            .environmentObject(PlayBackClass())
 
     }
 }

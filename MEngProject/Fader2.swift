@@ -6,19 +6,24 @@
 //
 
 import SwiftUI
+import AudioKit
 
 struct Fader2: View {
     var body: some View {
-            Home2()
+        Home2()
+            .environmentObject(PlayBackClass())
     }
 }
 
 struct Fader2_Previews: PreviewProvider {
     static var previews: some View {
         Fader2()
+            .environmentObject(PlayBackClass())
     }
 }
 struct Home2: View {
+    @EnvironmentObject var fader2value: PlayBackClass
+    
     @State var maxHeight: CGFloat = ((UIScreen.main.bounds.height * 2)/3) - 20
     
     //slider properties
@@ -27,16 +32,16 @@ struct Home2: View {
     @State var lastDragValue: CGFloat = 0
     
     var body: some View{
-                    
+        
         VStack{
             //Slider
             ZStack(alignment: .bottom, content: {
                 
                 Rectangle()
-                    .fill(Color.green).opacity((0.30))
-                    
+                    .fill(CustomPaleBlue)
+                
                 Rectangle()
-                    .fill(Color.orange)
+                    .fill(CustomPurple)
                     .frame(height: sliderHeight)
                     .cornerRadius(49)
             })
@@ -69,10 +74,13 @@ struct Home2: View {
                 let progress = sliderHeight / maxHeight
                 
                 sliderProgress = progress <= 1.0 ? progress : 1
-//                print("slider 2 progress \(sliderProgress)")
-                fader2global = sliderProgress
-//                print("fader 2 global \(fader2global)")
-
+                //                print("slider 2 progress \(sliderProgress)")
+                
+                //                fader2global = sliderProgress
+                fader2value.audio.volume = AUValue(sliderProgress)
+                print("volume again: \(fader2value.audio.volume)")
+                //                print("fader 2 global \(fader2global)")
+                
                 
             }).onEnded({(value) in
                 //storing last drag value for restoration
@@ -85,11 +93,11 @@ struct Home2: View {
                 lastDragValue = sliderHeight
                 
             }))
-
+            
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-
+        
         
     }
 }
