@@ -17,14 +17,19 @@ import DunneAudioKit
 
 //oscillator code
 class OscillatorConductor: ObservableObject, HasAudioEngine {
+    //Set up audio engine
     let engine = AudioEngine()
+    //Set up oscillator
     var osc = Oscillator()
     init() {
+        //Set the oscillator as the engine output
         engine.output = osc
+        //Start the engine
         try? engine.start()
-        osc.amplitude = 0.3//AUValue(fader1global * 100 )
+        //Set initial values for the oscilators amplitude and frequency
+        osc.amplitude = 0.3
         print("Amplitude: \(osc.amplitude)")
-        osc.frequency = 330//Float(fader2global * 10000)
+        osc.frequency = 330
         print("Frequency: \(osc.frequency)")
     }
 }
@@ -36,31 +41,31 @@ struct ContentView: View {
     @State var volValue: Float = 0
     @State var revValue: Float = 0
     
+    //Values to allow buttons to scale
     @State var thirdWidth: CGFloat = UIScreen.main.bounds.width/3
     @State var thirdHeight: CGFloat = UIScreen.main.bounds.height/3
     @State var sixthWidth: CGFloat = UIScreen.main.bounds.width/6
     
+    //Set up motion manager
     let motionManager = CMMotionManager()
     let motionManagerDM = CMMotionManager()
     
     @StateObject var conductor = OscillatorConductor()
     @State var oscOn: Bool = false
     
+    //Set up sheet showing booleans
     @State private var isShowingSelectInstrumentMenu = false
     @State private var isShowingAudioEffectsMenu = false
     @State private var isShowingSettingsMenu = false
     
     var body: some View {
-        
-        
         VStack {
-            
             VStack(alignment: .center, spacing: 15) {
                 VStack(alignment: .center){
                     HStack {
-                        //Instrument Menu button
+                        //Show instrument Menu button
                         Button(action: {
-                            print("Instrument")
+                            print("Instrument Menu")
                             isShowingSelectInstrumentMenu.toggle()
 
                         }){
@@ -81,9 +86,9 @@ struct ContentView: View {
                         .frame(width: thirdWidth - 20)
                         .sheet(isPresented: $isShowingSelectInstrumentMenu, onDismiss: instrumentDidDismiss){
                             SelectInstrument()}
-                        //Effects menu button
+                        //Show effects menu button
                         Button(action: {
-                            print("Effects")
+                            print("Effects Menu")
                             isShowingAudioEffectsMenu.toggle()
                         }){
                             VStack{
@@ -101,7 +106,7 @@ struct ContentView: View {
                         .frame(width: thirdWidth - 20)
                         .sheet(isPresented: $isShowingAudioEffectsMenu, onDismiss: effectsDidDismiss){
                             AudioEffectsMenu()}
-                        //Settings menu button
+                        //Show settings menu button
                         Button(action: {
                             print("Settings")
                             isShowingSettingsMenu.toggle()
@@ -127,7 +132,7 @@ struct ContentView: View {
                     .frame(height: thirdHeight - 30)
                 
                     HStack {
-                        //Left fader
+                        //Ossicaltor fader
                         Fader()
                             .frame(width: sixthWidth)
                         
@@ -137,6 +142,10 @@ struct ContentView: View {
                                 ArcKnob("Effect", value: $volValue)
                                     .foregroundColor(CustomYellow)
                                     .frame(height: thirdHeight - 20)
+//                                    .backgroundColor(CustomGreen)
+//                                    .backgroundStyle(CustomGreen)
+//                                ArcKnob.backgroundColor = CustomGreen
+//backgroundStyle()
                                 //2nd arc knob
                                 ArcKnob("Effect", value: $revValue)
                                     .foregroundColor(CustomYellow)
@@ -160,12 +169,10 @@ struct ContentView: View {
                 motionManagerDM.startDeviceMotionUpdates(to: OperationQueue.main) {
                     (data, error) in
                     if let deviceData = motionManagerDM.deviceMotion {
-//                        print("pitch: \(deviceData.attitude.pitch)  roll: \(deviceData.attitude.roll) yaw: \(deviceData.attitude.yaw)")
+//                        print("pitch: \(deviceData.attitude.pitch)" +
+//                              "roll: \(deviceData.attitude.roll) yaw: \(deviceData.attitude.yaw)")
                         conductor.osc.amplitude = AUValue(fader1global)
-                        
-//                        print("Amplitude: \(conductor.osc.amplitude)")
                         conductor.osc.frequency = AUValue((deviceData.attitude.pitch + 1.56) * 500)
-//                        print("Frequency: \(conductor.osc.frequency)")
                         
                     }
                 }

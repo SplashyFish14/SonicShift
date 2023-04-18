@@ -12,11 +12,12 @@ import SwiftUI
 
 final class PlayBackClass: ObservableObject {
     let playBackEngine = AudioEngine()
-    @Published var audio = AudioPlayer()
-    
+    let audio = AudioPlayer()
     init(){
         playBackEngine.output = audio
         try? playBackEngine.start()
+        audio.volume = 0.6
+
     }
 
     func loadFiles(fileName: String){

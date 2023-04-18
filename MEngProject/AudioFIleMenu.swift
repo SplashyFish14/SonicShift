@@ -11,7 +11,7 @@ struct AudioFIleMenu: View {
     @State var eightHeight: CGFloat = UIScreen.main.bounds.height/10
     @State var tenthWidth: CGFloat = UIScreen.main.bounds.width/10
     var audioFiles: [AudioSamples]
-
+    
     var body: some View {
         VStack{
             HStack{
@@ -29,12 +29,15 @@ struct AudioFIleMenu: View {
 //                            print(audioFiles[fileSelected])
                         }) {
                             Text(file.name)
-                        
+                                .font(.title)
+                                .bold()
+                                .foregroundColor(Color.white)
+                                .frame(width: 600, height: 60)
+
                         }
-                        .frame(width: 1000, height: 50)
                         .buttonStyle(MyButtonStyle2())
                     }
-                    .listRowBackground(CustomPaleGreen)
+//                    .listRowBackground(CustomPaleGreen)
                 }
             }
         }
@@ -46,7 +49,7 @@ struct MyButtonStyle2: ButtonStyle {
 //        Color.gray
         RoundedRectangle(cornerRadius: 20)
             .fill(CustomGreen)
-            .frame(width: (500), height:(80))
+//            .frame(width: (500), height:(80))
 
     }
     

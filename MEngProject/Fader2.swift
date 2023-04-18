@@ -22,7 +22,7 @@ struct Fader2_Previews: PreviewProvider {
     }
 }
 struct Home2: View {
-    @EnvironmentObject var fader2value: PlayBackClass
+    @EnvironmentObject var playbackClass: PlayBackClass
     
     @State var maxHeight: CGFloat = ((UIScreen.main.bounds.height * 2)/3) - 20
     
@@ -77,8 +77,20 @@ struct Home2: View {
                 //                print("slider 2 progress \(sliderProgress)")
                 
                 //                fader2global = sliderProgress
-                fader2value.audio.volume = AUValue(sliderProgress)
-                print("volume again: \(fader2value.audio.volume)")
+                
+                
+                DispatchQueue.main.async {
+                    playbackClass.audio.volume = AUValue(sliderProgress)
+                }
+//                self.playbackClass.audio.volume = AUValue(sliderProgress)
+//                DispatchQueue.main.async {
+//                    let newAudioPlayer = AudioPlayer()
+//                    newAudioPlayer.volume = AUValue(sliderProgress)
+//                    PlayBackClass.audio = newAudioPlayer
+//                    PlayBackClass.objectWillChange.send()
+//                }
+//                fader2value.audio.volume = AUValue(sliderProgress)
+                print("volume again: \(playbackClass.audio.volume)")
                 //                print("fader 2 global \(fader2global)")
                 
                 
