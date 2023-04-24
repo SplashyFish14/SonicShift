@@ -14,23 +14,36 @@ import AudioToolbox
 import SoundpipeAudioKit
 import Tonic
 import DunneAudioKit
+import AVFoundation
 
-//oscillator code
+//initialise oscillator
 class OscillatorConductor: ObservableObject, HasAudioEngine {
     //Set up audio engine
     let engine = AudioEngine()
     //Set up oscillator
+    var instrument = MIDISampler(name: "Instrument 1")
     var osc = Oscillator()
     init() {
         //Set the oscillator as the engine output
-        engine.output = osc
+//        engine.output = osc
+        engine.output = instrument
         //Start the engine
-        try? engine.start()
         //Set initial values for the oscilators amplitude and frequency
         osc.amplitude = 0.3
-        print("Amplitude: \(osc.amplitude)")
+//        print("Amplitude: \(osc.amplitude)")
         osc.frequency = 330
-        print("Frequency: \(osc.frequency)")
+//        print("Frequency: \(osc.frequency)")
+        do {
+            if let fileURL = Bundle.main.url(forResource: "Samples/Steingway Grand Piano 2", withExtension: "exs"){
+                try instrument.loadInstrument(url: fileURL)
+            }else {
+                    Log("Could not find file")
+
+            }
+        } catch {
+            Log("Could not load instrument")
+        }
+        try? engine.start()
     }
 }
 
@@ -40,6 +53,9 @@ struct ContentView: View {
     @State var sliderValue: Float = 0
     @State var volValue: Float = 0
     @State var revValue: Float = 0
+    
+    @State var midiNote: Float = 0
+    @State var myFrequency: Double = 0.0
     
     //Values to allow buttons to scale
     @State var thirdWidth: CGFloat = UIScreen.main.bounds.width/3
@@ -164,15 +180,28 @@ struct ContentView: View {
                 }
             }
             //Motion manager updates, and oscillator updates
+            //On appear of app home screen
             .onAppear(){
-                conductor.osc.start()
+                //Start the oscillator
+//                conductor.osc.start()
+                conductor.instrument.start()
+
+                //Start motion manager updates
                 motionManagerDM.startDeviceMotionUpdates(to: OperationQueue.main) {
                     (data, error) in
                     if let deviceData = motionManagerDM.deviceMotion {
 //                        print("pitch: \(deviceData.attitude.pitch)" +
 //                              "roll: \(deviceData.attitude.roll) yaw: \(deviceData.attitude.yaw)")
+                        //Sets oscillator amplitude based on left fader value
                         conductor.osc.amplitude = AUValue(fader1global)
+                        //Sets oscillator frequency based on device pitch
                         conductor.osc.frequency = AUValue((deviceData.attitude.pitch + 1.56) * 500)
+                        myFrequency = (deviceData.attitude.pitch + 1.56) * 500
+                        //print(conductor.osc.frequency)
+                        //print(fader1global)
+                        midiNote = Float(round(69 + 12 * log2(myFrequency/440)))
+                        conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                        conductor.instrument.stop()
                         
                     }
                 }

@@ -14,15 +14,16 @@ struct AudioFIleMenu: View {
     
     var body: some View {
         VStack{
+            //Title text
             HStack{
                 Text("Select Audio File")
                     .font(.largeTitle)
                     .frame(alignment: .center)
             }
             .frame(height: eightHeight)
+            //List of buttons to select each audio file
             HStack{
                 List{
-                    
                     ForEach(audioFiles) { file in
                         Button (action: {
                             fileSelected = file.songid
@@ -37,7 +38,6 @@ struct AudioFIleMenu: View {
                         }
                         .buttonStyle(MyButtonStyle2())
                     }
-//                    .listRowBackground(CustomPaleGreen)
                 }
             }
         }

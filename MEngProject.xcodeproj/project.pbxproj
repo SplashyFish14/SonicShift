@@ -35,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		005EAC8429F6BF0600C098CE /* Vintage Strat.exs */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Vintage Strat.exs"; path = "MEngProject/Vintage Strat.exs"; sourceTree = "<group>"; };
+		005EAC8529F6BF0600C098CE /* Steinway Grand Piano 2.exs */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Steinway Grand Piano 2.exs"; path = "MEngProject/Steinway Grand Piano 2.exs"; sourceTree = "<group>"; };
 		007B2F4229CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 66319__oneloginacc__loop_98bpm_2bars.mp3; sourceTree = "<group>"; };
 		007B2F4329CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3"; sourceTree = "<group>"; };
 		007B2F4429CB120B0069C947 /* 320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3"; sourceTree = "<group>"; };
@@ -74,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		005EAC8329F6BED200C098CE /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				005EAC8529F6BF0600C098CE /* Steinway Grand Piano 2.exs */,
+				005EAC8429F6BF0600C098CE /* Vintage Strat.exs */,
+			);
+			name = Samples;
+			sourceTree = "<group>";
+		};
 		007B2F3429C31F240069C947 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +110,7 @@
 			children = (
 				00F4450529E5830F00E788CD /* SSLaunchScreen.storyboard */,
 				00F4450329E5716500E788CD /* PlayBackClass.swift */,
+				005EAC8329F6BED200C098CE /* Samples */,
 				00E4A4AD29A011CD0047C1E0 /* MEngProject */,
 				00E4A4AC29A011CD0047C1E0 /* Products */,
 				007B2F3429C31F240069C947 /* Frameworks */,

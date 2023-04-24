@@ -16,7 +16,7 @@ final class PlayBackClass: ObservableObject {
     init(){
         playBackEngine.output = audio
         try? playBackEngine.start()
-        audio.volume = 0.6
+        audio.volume = 2
 
     }
 

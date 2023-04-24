@@ -24,14 +24,18 @@ struct AudioEffectsMenu: View {
                         .font(.title)
                         
                     List{
-                        Text("Effect 1")
+                        Text("Reverb")
+                        Text("Echo")
+                        Text("Delay")
                     }
                 }
                 VStack{
-                    Text("Select Effect 1")
+                    Text("Select Effect 2")
                         .font(.title)
                     List{
-                        Text("Effect 1")
+                        Text("Reverb")
+                        Text("Echo")
+                        Text("Delay")
                     }
                 }
             }
