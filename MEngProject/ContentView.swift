@@ -21,27 +21,31 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
     //Set up audio engine
     let engine = AudioEngine()
     //Set up oscillator
-    var instrument = MIDISampler(name: "Instrument 1")
+    var instrument = AppleSampler()
+//    var instrument = MIDISampler(name: "Instrument 1")
     var osc = Oscillator()
     init() {
         //Set the oscillator as the engine output
-//        engine.output = osc
-        engine.output = instrument
-        //Start the engine
         //Set initial values for the oscilators amplitude and frequency
         osc.amplitude = 0.3
 //        print("Amplitude: \(osc.amplitude)")
         osc.frequency = 330
 //        print("Frequency: \(osc.frequency)")
-        do {
-            if let fileURL = Bundle.main.url(forResource: "Samples/Steingway Grand Piano 2", withExtension: "exs"){
-                try instrument.loadInstrument(url: fileURL)
-            }else {
-                    Log("Could not find file")
 
+//        engine.output = osc
+        engine.output = instrument
+        //Start the engine
+
+        do {
+            if let fileURL = Bundle.main.url(forResource: "Samples/Steinway Grand Piano 2", withExtension: "exs"){
+                print(fileURL)
+                try instrument.loadInstrument(url: fileURL)
+            } else {
+                    Log("Could not find file")
             }
         } catch {
             Log("Could not load instrument")
+            
         }
         try? engine.start()
     }
@@ -151,6 +155,9 @@ struct ContentView: View {
                         //Ossicaltor fader
                         Fader()
                             .frame(width: sixthWidth)
+                            .accessibilityLabel("Instrument Fader")
+                            .accessibilityRespondsToUserInteraction(true)
+
                         
                         VStack{
                             HStack {
@@ -176,6 +183,9 @@ struct ContentView: View {
                         Fader2()
                             .frame(width: sixthWidth)
                             .environmentObject(PlayBackClass())
+                            .accessibilityLabel("Audio Playback Fader")
+                            .accessibilityRespondsToUserInteraction(true)
+
                     }
                 }
             }
@@ -191,7 +201,7 @@ struct ContentView: View {
                     (data, error) in
                     if let deviceData = motionManagerDM.deviceMotion {
 //                        print("pitch: \(deviceData.attitude.pitch)" +                              "roll: \(deviceData.attitude.roll) yaw: \(deviceData.attitude.yaw)")
-                        print("pitch: \(deviceData.attitude.pitch)")
+//                        print("pitch: \(deviceData.attitude.pitch)")
                         //Sets oscillator amplitude based on left fader value
                         conductor.osc.amplitude = AUValue(fader1global)
                         //Sets oscillator frequency based on device pitch
@@ -1416,6 +1426,11 @@ struct ContentView: View {
                             //midiNote = 70
                             //conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
                         }
+//                        if oscOn == true{
+//                            conductor.engine.output = conductor.osc
+//                        }else{
+//                            conductor.engine.output = conductor.instrument
+//                        }
                         //print(MIDINoteNumber(midiNote))
 //                        midiNote = Float(round(69 + 12 * log2(myFrequency/440)))
 //                        conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
@@ -1430,6 +1445,12 @@ struct ContentView: View {
     
     func instrumentDidDismiss(){
         isShowingSelectInstrumentMenu = false
+//        print("Instrument:" + instrumentSelected)
+//        if let fileURL = Bundle.main.url(forResource: instrumentSelected, withExtension: "exs"){
+//            try? conductor.instrument.loadInstrument(url: fileURL)
+//        }else {
+//                Log("Could not find file")
+//        }
     }
     func effectsDidDismiss(){
         isShowingAudioEffectsMenu = false

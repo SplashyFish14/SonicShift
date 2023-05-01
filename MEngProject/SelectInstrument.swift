@@ -27,14 +27,15 @@ struct SelectInstrument: View {
             HStack{
                 Spacer()
                 Button(action: {
-                    print("Instrument 1")
+                    print("Osc")
+                    oscOn = true
                 }){
                     VStack{
                         Image(systemName: "pianokeys.inverse")
                             .font(.largeTitle)
                             .foregroundColor(Color.white)
 
-                        Text("Instrument 1")
+                        Text("osc")
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
@@ -43,14 +44,16 @@ struct SelectInstrument: View {
                 .buttonStyle(MyButtonStyleInstrument())
                 Spacer()
                 Button(action: {
-                    print("Instrument 2")
+                    print("Vintage Strat")
+                    instrumentSelected = "Samples/Vintage Strat"
+                    oscOn = false
                 }){
                     VStack{
                         Image(systemName: "pianokeys.inverse")
                             .font(.largeTitle)
                             .foregroundColor(Color.white)
 
-                        Text("Instrument 2")
+                        Text("Vintage Strat")
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)

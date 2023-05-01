@@ -24,7 +24,9 @@ var fileSelected: Int = 1
 //var audioFilePrettyNames: [String] = ["Audio File 1", "Audio File 2", "Audio File 3"]
 //var audioFileNames: [String] = ["66319__oneloginacc__loop_98bpm_2bars", "244291__orangefreesounds__80s-disco-drum-loop-114-bpm", "320803__ajubamusic__funky-drum-loops84-bpm(loop10)"]
 
+var instrumentSelected: String = "Samples/Steingway Grand Piano 2"
 
+var oscOn: Bool = true
 
 @main
 struct MEngProjectApp: App {
