@@ -71,13 +71,15 @@ struct AudioFilePlayBack: View {
     @State var update = true
     
     @State var selectedPrettyName = audioFiles[fileSelected - 1 ].name
-    
+    @EnvironmentObject var colours: ColourScheme
+    @EnvironmentObject var performanceMode: Performance
+
     
     var body: some View {
         
         ZStack{
             RoundedRectangle(cornerRadius: 50)
-                .fill(CustomGreen)
+                .fill(colours.colour2)
             VStack{
                 HStack{
                     Button(action: {
@@ -167,7 +169,12 @@ struct AudioFilePlayBack: View {
                 
                 Button(action: {
                     print("Audio File Menu")
-                    isShowingAudioFileMenu.toggle()
+                    if performanceMode.mode == false{
+                        isShowingAudioFileMenu.toggle()
+                    } else{
+                        print("performance mode on")
+                    }
+                    
                 }){
                     ZStack{
                         RoundedRectangle(cornerRadius: 50)
@@ -175,11 +182,11 @@ struct AudioFilePlayBack: View {
                             .foregroundColor(Color.white)
                         if update == true{
                             Text(audioFiles[fileSelected - 1 ].name)
-                                .foregroundColor(CustomPurple)
+                                .foregroundColor(colours.colour4)
                                 .font(.largeTitle).bold()
                         } else {
                             Text(audioFiles[fileSelected - 1 ].name)
-                                .foregroundColor(CustomPurple)
+                                .foregroundColor(colours.colour4)
                                 .font(.largeTitle).bold()
                         }
                         

@@ -45,10 +45,12 @@ struct AudioFIleMenu: View {
 }
 struct MyButtonStyle2: ButtonStyle {
     
+    @EnvironmentObject var colours: ColourScheme
+    
     var background: some View {
 //        Color.gray
         RoundedRectangle(cornerRadius: 20)
-            .fill(CustomGreen)
+            .fill(colours.colour2)
 //            .frame(width: (500), height:(80))
 
     }

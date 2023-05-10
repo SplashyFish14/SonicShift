@@ -31,10 +31,12 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
 //        print("Amplitude: \(osc.amplitude)")
         osc.frequency = 330
 //        print("Frequency: \(osc.frequency)")
-
+        
 //        engine.output = osc
         engine.output = instrument
+//        engine.output = osc
         //Start the engine
+        try? engine.start()
 
         do {
             if let fileURL = Bundle.main.url(forResource: "Samples/Steinway Grand Piano 2", withExtension: "exs"){
@@ -47,7 +49,7 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
             Log("Could not load instrument")
             
         }
-        try? engine.start()
+//        try? engine.start()
     }
 }
 
@@ -77,6 +79,10 @@ struct ContentView: View {
     @State private var isShowingSelectInstrumentMenu = false
     @State private var isShowingAudioEffectsMenu = false
     @State private var isShowingSettingsMenu = false
+    
+    @State var performMode = false
+    @EnvironmentObject var colours: ColourScheme
+
     
     var body: some View {
         VStack {
@@ -163,7 +169,7 @@ struct ContentView: View {
                             HStack {
                                 //1st arc knob
                                 ArcKnob("Effect", value: $volValue)
-                                    .foregroundColor(CustomYellow)
+                                    .foregroundColor(colours.colour5)
                                     .frame(height: thirdHeight - 20)
 //                                    .backgroundColor(CustomGreen)
 //                                    .backgroundStyle(CustomGreen)
@@ -171,7 +177,7 @@ struct ContentView: View {
 //backgroundStyle()
                                 //2nd arc knob
                                 ArcKnob("Effect", value: $revValue)
-                                    .foregroundColor(CustomYellow)
+                                    .foregroundColor(colours.colour5)
                                     .frame(height: thirdHeight - 20)
                             }
                             //Playback section
@@ -193,7 +199,7 @@ struct ContentView: View {
             //On appear of app home screen
             .onAppear(){
                 //Start the oscillator
-//                conductor.osc.start()
+                conductor.osc.start()
 //                conductor.instrument.start()
 
                 //Start motion manager updates
@@ -1464,6 +1470,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .previewInterfaceOrientation(.landscapeLeft)
+            .environmentObject(ColourScheme())
     }
 }
 
@@ -1472,9 +1479,11 @@ struct MyButtonStyle: ButtonStyle {
     @State var thirdHeight: CGFloat = UIScreen.main.bounds.height/3
     @State var thirdWidth: CGFloat = UIScreen.main.bounds.width/3
     
+    @EnvironmentObject var colours: ColourScheme
+    
     var background: some View {
         RoundedRectangle(cornerRadius: 50)
-            .fill(CustomPurple)
+            .fill(colours.colour4)
             .frame(width: (thirdWidth - 30), height: (thirdHeight - 40))
     }
     

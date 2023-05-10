@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		003559122A000F6B007F87AE /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = 003559112A000F6B007F87AE /* Samples */; };
+		0035BE6F2A0AD26C004EF8EE /* ColourScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0035BE6E2A0AD26C004EF8EE /* ColourScheme.swift */; };
+		0035BE712A0AEBBC004EF8EE /* Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0035BE702A0AEBBC004EF8EE /* Performance.swift */; };
 		007B2F3629C31F240069C947 /* AudioKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = 007B2F3529C31F240069C947 /* AudioKitUI */; };
 		007B2F4529CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 007B2F4229CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 */; };
 		007B2F4629CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 007B2F4329CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 */; };
@@ -23,6 +25,7 @@
 		008B811A29D5A29500E15A61 /* 187471__minecast__simple-loopable-beat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 008B811729D5A29500E15A61 /* 187471__minecast__simple-loopable-beat.mp3 */; };
 		008B811C29D6F1EA00E15A61 /* AudioEffectsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B811B29D6F1EA00E15A61 /* AudioEffectsMenu.swift */; };
 		008B811E29D6F2E700E15A61 /* SettingsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008B811D29D6F2E700E15A61 /* SettingsMenu.swift */; };
+		00BD25FA2A013C9B0084C642 /* Sampler Instruments in Resources */ = {isa = PBXBuildFile; fileRef = 00BD25F92A013C9B0084C642 /* Sampler Instruments */; };
 		00E4A4AF29A011CD0047C1E0 /* MEngProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A4AE29A011CD0047C1E0 /* MEngProjectApp.swift */; };
 		00E4A4B129A011CD0047C1E0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E4A4B029A011CD0047C1E0 /* ContentView.swift */; };
 		00E4A4B329A011CD0047C1E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00E4A4B229A011CD0047C1E0 /* Assets.xcassets */; };
@@ -38,6 +41,8 @@
 /* Begin PBXFileReference section */
 		0035590E29FFF078007F87AE /* MEngProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MEngProject.entitlements; sourceTree = "<group>"; };
 		003559112A000F6B007F87AE /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Samples; sourceTree = "<group>"; };
+		0035BE6E2A0AD26C004EF8EE /* ColourScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourScheme.swift; sourceTree = "<group>"; };
+		0035BE702A0AEBBC004EF8EE /* Performance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Performance.swift; sourceTree = "<group>"; };
 		007B2F4229CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 66319__oneloginacc__loop_98bpm_2bars.mp3; sourceTree = "<group>"; };
 		007B2F4329CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3"; sourceTree = "<group>"; };
 		007B2F4429CB120B0069C947 /* 320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3"; sourceTree = "<group>"; };
@@ -51,6 +56,8 @@
 		008B811729D5A29500E15A61 /* 187471__minecast__simple-loopable-beat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "187471__minecast__simple-loopable-beat.mp3"; sourceTree = "<group>"; };
 		008B811B29D6F1EA00E15A61 /* AudioEffectsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEffectsMenu.swift; sourceTree = "<group>"; };
 		008B811D29D6F2E700E15A61 /* SettingsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenu.swift; sourceTree = "<group>"; };
+		00BD25F92A013C9B0084C642 /* Sampler Instruments */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Sampler Instruments"; sourceTree = "<group>"; };
+		00BD25FB2A0275B20084C642 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		00E4A4AB29A011CD0047C1E0 /* MEngProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEngProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E4A4AE29A011CD0047C1E0 /* MEngProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MEngProjectApp.swift; sourceTree = "<group>"; };
 		00E4A4B029A011CD0047C1E0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -119,11 +126,14 @@
 		00E4A4AD29A011CD0047C1E0 /* MEngProject */ = {
 			isa = PBXGroup;
 			children = (
+				00BD25FB2A0275B20084C642 /* Info.plist */,
 				0035590E29FFF078007F87AE /* MEngProject.entitlements */,
+				00BD25F92A013C9B0084C642 /* Sampler Instruments */,
 				003559112A000F6B007F87AE /* Samples */,
 				007B2F3729C488E90069C947 /* AudioFiles */,
 				00E4A4AE29A011CD0047C1E0 /* MEngProjectApp.swift */,
 				00E4A4B029A011CD0047C1E0 /* ContentView.swift */,
+				0035BE6E2A0AD26C004EF8EE /* ColourScheme.swift */,
 				00E4A4B229A011CD0047C1E0 /* Assets.xcassets */,
 				00F4450B29E6B12400E788CD /* Icon.png */,
 				00E4A4B429A011CD0047C1E0 /* Preview Content */,
@@ -134,6 +144,7 @@
 				0082BCAC29B0CAA300DD07EE /* Fader2.swift */,
 				0082BCAE29B238AD00DD07EE /* AudioFilePlayBack.swift */,
 				008B811B29D6F1EA00E15A61 /* AudioEffectsMenu.swift */,
+				0035BE702A0AEBBC004EF8EE /* Performance.swift */,
 			);
 			path = MEngProject;
 			sourceTree = "<group>";
@@ -225,6 +236,7 @@
 				008B811A29D5A29500E15A61 /* 187471__minecast__simple-loopable-beat.mp3 in Resources */,
 				008B811829D5A29500E15A61 /* hop1.mp3 in Resources */,
 				007B2F4729CB120B0069C947 /* 320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3 in Resources */,
+				00BD25FA2A013C9B0084C642 /* Sampler Instruments in Resources */,
 				00E4A4B329A011CD0047C1E0 /* Assets.xcassets in Resources */,
 				00F4450C29E6B12400E788CD /* Icon.png in Resources */,
 				008B811929D5A29500E15A61 /* 395037__kodack__simple-relaxing-guitar-loop.mp3 in Resources */,
@@ -245,6 +257,8 @@
 				00F4450429E5716500E788CD /* PlayBackClass.swift in Sources */,
 				00E4A4B129A011CD0047C1E0 /* ContentView.swift in Sources */,
 				0082BCA829A63F9600DD07EE /* SelectInstrument.swift in Sources */,
+				0035BE712A0AEBBC004EF8EE /* Performance.swift in Sources */,
+				0035BE6F2A0AD26C004EF8EE /* ColourScheme.swift in Sources */,
 				007CE94729BA73A100BF867D /* AudioFIleMenu.swift in Sources */,
 				0082BCAD29B0CAA300DD07EE /* Fader2.swift in Sources */,
 				00E4A4AF29A011CD0047C1E0 /* MEngProjectApp.swift in Sources */,
@@ -376,29 +390,33 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MEngProject/MEngProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MEngProject/Preview Content\"";
 				DEVELOPMENT_TEAM = R3Q2HP4BK8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MEngProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SonicShift;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = SSLaunchScreen.storyboard;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AVSound.MEngProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -409,29 +427,33 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MEngProject/MEngProject.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MEngProject/Preview Content\"";
 				DEVELOPMENT_TEAM = R3Q2HP4BK8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MEngProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SonicShift;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = SSLaunchScreen.storyboard;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.AVSound.MEngProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

@@ -204,9 +204,11 @@ struct MyButtonStyleInstrument: ButtonStyle {
     @State var thirdHeight: CGFloat = UIScreen.main.bounds.height/3
     @State var fifthWidth: CGFloat = UIScreen.main.bounds.width/5.5
     
+    @EnvironmentObject var colours: ColourScheme
+
     var background: some View {
         RoundedRectangle(cornerRadius: 20)
-            .foregroundColor(CustomGreen)
+            .foregroundColor(colours.colour2)
             .frame(width: fifthWidth, height: 160)
     }
     

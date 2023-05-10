@@ -31,6 +31,9 @@ struct Home2: View {
     @State var sliderHeight: CGFloat = 0
     @State var lastDragValue: CGFloat = 0
     
+    @EnvironmentObject var colours: ColourScheme
+
+    
     var body: some View{
         
         VStack{
@@ -38,10 +41,10 @@ struct Home2: View {
             ZStack(alignment: .bottom, content: {
                 
                 Rectangle()
-                    .fill(CustomPaleBlue)
+                    .fill(colours.colour6)
                 
                 Rectangle()
-                    .fill(CustomPurple)
+                    .fill(colours.colour4)
                     .frame(height: sliderHeight)
                     .cornerRadius(49)
             })
