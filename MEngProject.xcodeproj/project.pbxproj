@@ -10,6 +10,7 @@
 		003559122A000F6B007F87AE /* Samples in Resources */ = {isa = PBXBuildFile; fileRef = 003559112A000F6B007F87AE /* Samples */; };
 		0035BE6F2A0AD26C004EF8EE /* ColourScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0035BE6E2A0AD26C004EF8EE /* ColourScheme.swift */; };
 		0035BE712A0AEBBC004EF8EE /* Performance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0035BE702A0AEBBC004EF8EE /* Performance.swift */; };
+		0035BE732A0D26AF004EF8EE /* Volumes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0035BE722A0D26AF004EF8EE /* Volumes.swift */; };
 		007B2F3629C31F240069C947 /* AudioKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = 007B2F3529C31F240069C947 /* AudioKitUI */; };
 		007B2F4529CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 007B2F4229CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 */; };
 		007B2F4629CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 007B2F4329CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 */; };
@@ -43,6 +44,7 @@
 		003559112A000F6B007F87AE /* Samples */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Samples; sourceTree = "<group>"; };
 		0035BE6E2A0AD26C004EF8EE /* ColourScheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColourScheme.swift; sourceTree = "<group>"; };
 		0035BE702A0AEBBC004EF8EE /* Performance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Performance.swift; sourceTree = "<group>"; };
+		0035BE722A0D26AF004EF8EE /* Volumes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Volumes.swift; sourceTree = "<group>"; };
 		007B2F4229CB120B0069C947 /* 66319__oneloginacc__loop_98bpm_2bars.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 66319__oneloginacc__loop_98bpm_2bars.mp3; sourceTree = "<group>"; };
 		007B2F4329CB120B0069C947 /* 244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "244291__orangefreesounds__80s-disco-drum-loop-114-bpm.mp3"; sourceTree = "<group>"; };
 		007B2F4429CB120B0069C947 /* 320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "320803__ajubamusic__funky-drum-loops84-bpm(loop10).mp3"; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				00F4450B29E6B12400E788CD /* Icon.png */,
 				00E4A4B429A011CD0047C1E0 /* Preview Content */,
 				0082BCA329A1679E00DD07EE /* Fader.swift */,
+				0035BE722A0D26AF004EF8EE /* Volumes.swift */,
 				007CE94629BA73A100BF867D /* AudioFIleMenu.swift */,
 				0082BCA729A63F9600DD07EE /* SelectInstrument.swift */,
 				008B811D29D6F2E700E15A61 /* SettingsMenu.swift */,
@@ -261,6 +264,7 @@
 				0035BE6F2A0AD26C004EF8EE /* ColourScheme.swift in Sources */,
 				007CE94729BA73A100BF867D /* AudioFIleMenu.swift in Sources */,
 				0082BCAD29B0CAA300DD07EE /* Fader2.swift in Sources */,
+				0035BE732A0D26AF004EF8EE /* Volumes.swift in Sources */,
 				00E4A4AF29A011CD0047C1E0 /* MEngProjectApp.swift in Sources */,
 				0082BCAF29B238AD00DD07EE /* AudioFilePlayBack.swift in Sources */,
 			);

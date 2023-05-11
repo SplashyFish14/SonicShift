@@ -12,6 +12,9 @@ struct SelectInstrument: View {
     @State var tenthWidth: CGFloat = UIScreen.main.bounds.width/10
     @State var thirdWidth: CGFloat = UIScreen.main.bounds.width/3
     
+    @EnvironmentObject var conductor: OscillatorConductor
+    @EnvironmentObject var volumes: Volumes
+    
 //    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     var body: some View {
@@ -27,51 +30,47 @@ struct SelectInstrument: View {
             HStack{
                 Spacer()
                 Button(action: {
-                    print("Osc")
-                    oscOn = true
+                    print("Oscillator Selected")
+//                    oscOn = true
+//                    conductor.oscMixer.volume = 0.0
+//                    conductor.instMixer.volume = 0.0
+                    volumes.OscOn = true
+                    print("Inst Volume = \(conductor.instMixer.volume)")
+                    print("Osc Mixer = \(conductor.oscMixer.volume)")
                 }){
                     VStack{
-                        Image(systemName: "pianokeys.inverse")
+                        Image(systemName: "waveform")
+//                            .resizable()
+//                            .scaledToFit()
                             .font(.largeTitle)
                             .foregroundColor(Color.white)
 
-                        Text("osc")
-                            .font(.title2)
+                        Text("Theremin")
+                            .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
                     }
                 }
                 .buttonStyle(MyButtonStyleInstrument())
+//                .frame(width: thirdWidth - 20, height: eighthHeight)
                 Spacer()
                 Button(action: {
-                    print("Vintage Strat")
-                    instrumentSelected = "Samples/Vintage Strat"
-                    oscOn = false
+                    print("Instrument Selected")
+//                    instrumentSelected = "Samples/Vintage Strat"
+//                    oscOn = false
+//                    conductor.oscMixer.volume = 0.0
+//                    conductor.instMixer.volume = 0.0
+                    volumes.OscOn = false
+                    print("Inst Volume = \(conductor.instMixer.volume)")
+                    print("Osc Mixer = \(conductor.oscMixer.volume)")
                 }){
                     VStack{
                         Image(systemName: "pianokeys.inverse")
                             .font(.largeTitle)
                             .foregroundColor(Color.white)
 
-                        Text("Vintage Strat")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-
-                    }
-                }
-                .buttonStyle(MyButtonStyleInstrument())
-                Spacer()
-                Button(action: {
-                    print("Instrument 3")
-                }){
-                    VStack{
-                        Image(systemName: "pianokeys.inverse")
+                        Text("Keyboard")
                             .font(.largeTitle)
-                            .foregroundColor(Color.white)
-
-                        Text("Instrument 3")
-                            .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
 
@@ -88,15 +87,15 @@ struct SelectInstrument: View {
                     print("Instrument 4")
                 }){
                     VStack{
-                        Image(systemName: "pianokeys.inverse")
-                            .font(.largeTitle)
-                            .foregroundColor(Color.white)
-
-                        Text("Instrument 4")
+//                        Image(systemName: "pianokeys.inverse")
+//                            .font(.largeTitle)
+//                            .foregroundColor(Color.white)
+                        
+                        Text("Coming Soon!")
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
-}
+                    }
                 }
                 .buttonStyle(MyButtonStyleInstrument())
                 Spacer()
@@ -104,89 +103,21 @@ struct SelectInstrument: View {
                     print("Instrument 5")
                 }){
                     VStack{
-                        Image(systemName: "pianokeys.inverse")
-                            .font(.largeTitle)
-                            .foregroundColor(Color.white)
-
-                        Text("Instrument 5")
+//                        Image(systemName: "pianokeys.inverse")
+//                            .font(.largeTitle)
+//                            .foregroundColor(Color.white)
+                        
+                        Text("Coming Soon!")
                             .font(.title2)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
-}
-                }
-                .buttonStyle(MyButtonStyleInstrument())
-                Spacer()
-                Button(action: {
-                    print("Instrument 6")
-                }){
-                    VStack{
-                        Image(systemName: "pianokeys.inverse")
-                            .font(.largeTitle)
-                            .foregroundColor(Color.white)
-
-                        Text("Instrument 6")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-}
+                    }
                 }
                 .buttonStyle(MyButtonStyleInstrument())
                 Spacer()
             }
             Spacer()
-            HStack{
-                Spacer()
-                Button(action: {
-                    print("Instrument 7")
-                }){
-                    VStack{
-                        Image(systemName: "pianokeys.inverse")
-                            .font(.largeTitle)
-                            .foregroundColor(Color.white)
 
-                        Text("Instrument 7")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-}
-                }
-                .buttonStyle(MyButtonStyleInstrument())
-                Spacer()
-                Button(action: {
-                    print("Instrument 8")
-                }){
-                    VStack{
-                        Image(systemName: "pianokeys.inverse")
-                            .font(.largeTitle)
-                            .foregroundColor(Color.white)
-
-                        Text("Instrument 8")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-}
-                }
-                .buttonStyle(MyButtonStyleInstrument())
-                Spacer()
-                Button(action: {
-                    print("Instrument 9")
-                }){
-                    VStack{
-                        Image(systemName: "pianokeys.inverse")
-                            .font(.largeTitle)
-                            .foregroundColor(Color.white)
-
-                        Text("Instrument 9")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-}
-                }
-                .buttonStyle(MyButtonStyleInstrument())
-                Spacer()
-
-            }
-            Spacer()
         }
     }
 }
@@ -202,14 +133,14 @@ struct SelectInstrument_Previews: PreviewProvider {
 
 struct MyButtonStyleInstrument: ButtonStyle {
     @State var thirdHeight: CGFloat = UIScreen.main.bounds.height/3
-    @State var fifthWidth: CGFloat = UIScreen.main.bounds.width/5.5
+    @State var fifthWidth: CGFloat = UIScreen.main.bounds.width/4.5
     
     @EnvironmentObject var colours: ColourScheme
 
     var background: some View {
         RoundedRectangle(cornerRadius: 20)
             .foregroundColor(colours.colour2)
-            .frame(width: fifthWidth, height: 160)
+            .frame(width: fifthWidth, height: 190)
     }
     
     func makeBody(configuration: Configuration) -> some View {

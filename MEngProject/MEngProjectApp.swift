@@ -57,6 +57,7 @@ struct MEngProjectApp: App {
                 .environmentObject(PlayBackClass())
                 .environmentObject(ColourScheme())
                 .environmentObject(Performance())
+                .environmentObject(Volumes())
         }
     }
 }

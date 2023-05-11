@@ -16,15 +16,26 @@ import Tonic
 import DunneAudioKit
 import AVFoundation
 
+//var osc: Oscillator!
+
 //initialise oscillator
 class OscillatorConductor: ObservableObject, HasAudioEngine {
     //Set up audio engine
     let engine = AudioEngine()
+    @EnvironmentObject var mixerVolumes: Volumes
+    @Published var instrumentVol = 0
+    @Published var oscVol = 1
+    @Published var instMixer = Mixer()
+    @Published var oscMixer = Mixer()
+    @Published var mixer = Mixer()
+//    @Published var OscOn = true
+    
     //Set up oscillator
     var instrument = AppleSampler()
 //    var instrument = MIDISampler(name: "Instrument 1")
-    var osc = Oscillator()
+    var osc: Oscillator!
     init() {
+        osc = Oscillator()
         //Set the oscillator as the engine output
         //Set initial values for the oscilators amplitude and frequency
         osc.amplitude = 0.3
@@ -33,7 +44,15 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
 //        print("Frequency: \(osc.frequency)")
         
 //        engine.output = osc
-        engine.output = instrument
+        instMixer = Mixer(instrument)
+        oscMixer = Mixer(osc)
+        mixer = Mixer(instMixer, oscMixer)
+        
+//
+        instMixer.volume = 2
+        oscMixer.volume = 0.5
+        engine.output = mixer
+        
 //        engine.output = osc
         //Start the engine
         try? engine.start()
@@ -51,6 +70,16 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
         }
 //        try? engine.start()
     }
+    
+//    func oscOn() {
+//        instMixer.volume = 0.0
+//        oscMixer.volume = 1.0
+//    }
+//
+//    func instOn() {
+//        instMixer.volume = 1.0
+//        oscMixer.volume = 0.0
+//    }
 }
 
 struct ContentView: View {
@@ -82,7 +111,7 @@ struct ContentView: View {
     
     @State var performMode = false
     @EnvironmentObject var colours: ColourScheme
-
+    @EnvironmentObject var volumes: Volumes
     
     var body: some View {
         VStack {
@@ -111,7 +140,9 @@ struct ContentView: View {
                         .buttonStyle(MyButtonStyle())
                         .frame(width: thirdWidth - 20)
                         .sheet(isPresented: $isShowingSelectInstrumentMenu, onDismiss: instrumentDidDismiss){
-                            SelectInstrument()}
+                            SelectInstrument()
+                                .environmentObject(OscillatorConductor())
+                        }
                         //Show effects menu button
                         Button(action: {
                             print("Effects Menu")
@@ -199,8 +230,9 @@ struct ContentView: View {
             //On appear of app home screen
             .onAppear(){
                 //Start the oscillator
+                
                 conductor.osc.start()
-//                conductor.instrument.start()
+                conductor.instrument.start()
 
                 //Start motion manager updates
                 motionManagerDM.startDeviceMotionUpdates(to: OperationQueue.main) {
@@ -209,7 +241,12 @@ struct ContentView: View {
 //                        print("pitch: \(deviceData.attitude.pitch)" +                              "roll: \(deviceData.attitude.roll) yaw: \(deviceData.attitude.yaw)")
 //                        print("pitch: \(deviceData.attitude.pitch)")
                         //Sets oscillator amplitude based on left fader value
-                        conductor.osc.amplitude = AUValue(fader1global)
+                        if volumes.OscOn == true{
+                            conductor.osc.amplitude = AUValue(fader1global)
+                        }else{
+                            conductor.osc.amplitude = 0
+                        }
+                        
                         //Sets oscillator frequency based on device pitch
                         conductor.osc.frequency = AUValue((deviceData.attitude.pitch + 1.56) * 500)
                         myFrequency = (deviceData.attitude.pitch + 1.56) * 500
@@ -252,7 +289,12 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 70
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                } else{
+                                    
+                                }
+                                
                             }
                         case -1.4 ..< -1.3:
                             if midiNote == 71 {
@@ -290,7 +332,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 71
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case -1.3 ..< -1.2:
                             if midiNote == 72 {
@@ -328,7 +371,9 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 72
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                }
                             }
                         case -1.2 ..< -1.1:
                             if midiNote == 73 {
@@ -366,7 +411,9 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 73
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                }
                             }
                         case -1.1 ..< -1.0:
                             if midiNote == 74 {
@@ -404,7 +451,10 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 74
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                    
+                                }
                             }
                         case -1.0 ..< -0.9:
                             if midiNote == 75 {
@@ -442,7 +492,9 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 75
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case -0.9 ..< -0.8:
                             if midiNote == 76 {
@@ -480,7 +532,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 76
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case -0.8 ..< -0.7:
                             if midiNote == 77 {
@@ -518,7 +571,9 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 77
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case -0.7 ..< -0.6:
                             if midiNote == 78 {
@@ -556,7 +611,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 78
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case -0.6 ..< -0.5:
                             if midiNote == 79 {
@@ -594,7 +650,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 79
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case -0.5 ..< -0.4:
                             if midiNote == 80 {
@@ -632,7 +689,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 80
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case -0.4 ..< -0.3:
                             if midiNote == 81 {
@@ -670,7 +728,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 81
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case -0.3 ..< -0.2:
                             if midiNote == 82 {
@@ -708,7 +767,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 82
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case -0.2 ..< -0.1:
                             if midiNote == 83 {
@@ -746,7 +806,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 83
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case -0.1 ..< 0.0:
                             if midiNote == 84 {
@@ -784,7 +845,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 84
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 0.0 ..< 0.1:
                             if midiNote == 85 {
@@ -822,7 +884,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 85
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 0.1 ..< 0.2:
                             if midiNote == 86 {
@@ -860,7 +923,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 86
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 0.2 ..< 0.3:
                             if midiNote == 87 {
@@ -898,7 +962,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 87
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 0.3 ..< 0.4:
                             if midiNote == 88 {
@@ -936,7 +1001,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 88
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 0.4 ..< 0.5:
                             if midiNote == 89 {
@@ -974,7 +1040,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 89
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 0.5 ..< 0.6:
                             if midiNote == 90 {
@@ -1012,7 +1079,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 90
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 0.6 ..< 0.7:
                             if midiNote == 91 {
@@ -1050,7 +1118,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 91
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 0.7 ..< 0.8:
                             if midiNote == 92 {
@@ -1088,7 +1157,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 92
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 0.8 ..< 0.9:
                             if midiNote == 93 {
@@ -1126,7 +1196,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 93
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                             
                         case 0.8 ..< 0.9:
@@ -1165,7 +1236,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 94
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 0.9 ..< 1.0:
                             if midiNote == 95 {
@@ -1203,7 +1275,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 95
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 1.0 ..< 1.1:
                             if midiNote == 96 {
@@ -1241,7 +1314,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 96
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 1.1 ..< 1.2:
                             if midiNote == 97 {
@@ -1279,7 +1353,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 97
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 1.2 ..< 1.3:
                             if midiNote == 98 {
@@ -1316,9 +1391,9 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 99, channel: 0)
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
-
                                 midiNote = 98
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 1.3 ..< 1.4:
                             if midiNote == 99 {
@@ -1356,7 +1431,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 100, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 99
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         case 1.4 ..< 1.5:
                             if midiNote == 100 {
@@ -1394,7 +1470,8 @@ struct ContentView: View {
                                 conductor.instrument.stop(noteNumber: 99, channel: 0)
                                 conductor.instrument.stop(noteNumber: 101, channel: 0)
                                 midiNote = 100
-                                conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)
+                                if volumes.OscOn == false{
+                                    conductor.instrument.play(noteNumber: MIDINoteNumber(midiNote), velocity: UInt8(fader1global*100), channel: 0)}
                             }
                         default:
                             conductor.instrument.stop(noteNumber: 70, channel: 0)
