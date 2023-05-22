@@ -9,38 +9,49 @@ import SwiftUI
 
 struct AudioEffectsMenu: View {
     @State var eightHeight: CGFloat = UIScreen.main.bounds.height/10
-    
+    @EnvironmentObject var colours: ColourScheme
+
     var body: some View {
-        VStack{
-            ZStack{
-                Text("Select Audio Effects")
-                    .font(.largeTitle)
-                    .frame(alignment: .center)
-            }
-            .frame(height: eightHeight)
-            HStack{
-                VStack{
-                    Text("Select Effect 1")
-                        .font(.title)
+        ZStack{
+            VStack{
+                ZStack{
+                    Text("Select Audio Effects")
+                        .font(.largeTitle)
+                        .frame(alignment: .center)
+                }
+                .frame(height: eightHeight)
+                HStack{
+                    VStack{
+                        Text("Select Effect 1")
+                            .font(.title)
                         
-                    List{
-                        Text("Reverb")
-                        Text("Echo")
-                        Text("Delay")
+                        List{
+                            Text("Reverb")
+                            Text("Echo")
+                            Text("Delay")
+                        }
+                    }
+                    VStack{
+                        Text("Select Effect 2")
+                            .font(.title)
+                        List{
+                            Text("Reverb")
+                            Text("Echo")
+                            Text("Delay")
+                        }
                     }
                 }
-                VStack{
-                    Text("Select Effect 2")
-                        .font(.title)
-                    List{
-                        Text("Reverb")
-                        Text("Echo")
-                        Text("Delay")
-                    }
-                }
+            }
+            ZStack{
+                colours.colour1
+                    .ignoresSafeArea()
+                    .opacity(0.5)
+                Text("Coming Soon!")
+                    .font(.largeTitle)
+                    .rotationEffect(.degrees(-10))
+                    .bold()
             }
         }
-        
     }
 }
 

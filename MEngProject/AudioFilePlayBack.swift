@@ -76,7 +76,6 @@ struct AudioFilePlayBack: View {
 
     
     var body: some View {
-        
         ZStack{
             RoundedRectangle(cornerRadius: 50)
                 .fill(colours.colour2)
@@ -86,7 +85,6 @@ struct AudioFilePlayBack: View {
                         print("backward")
                         if fileSelected > 1 {
                             fileSelected = fileSelected - 1
-
                         } else {
                             fileSelected = maxAudioFiles
                         }
@@ -95,7 +93,6 @@ struct AudioFilePlayBack: View {
                             conductor.audio.start()
                         }
                         update.toggle()
-
                     }) {
                         Image(systemName: "chevron.backward.circle")
                             .resizable()
@@ -114,16 +111,12 @@ struct AudioFilePlayBack: View {
                             isPlaying.toggle()
                             print("Audio file start")
                             conductor.audio.play()
-                            
-                            //print("Volume: \(conductor.audio.volume)")
-
                         } else{
                             isPlaying.toggle()
                             print("Audio file pause")
                             conductor.audio.pause()
                         }
                         update.toggle()
-
                     }) {
                         if isPlaying == true {
                             Image(systemName: "pause.fill")
@@ -138,24 +131,19 @@ struct AudioFilePlayBack: View {
                                 .foregroundColor(Color.white)
                                 .padding(10)
                         }
-                        
                     }
                     Button(action: {
                         print("forward")
                         if fileSelected < maxAudioFiles {
                             fileSelected = fileSelected + 1
-
                         } else {
                             fileSelected = 1
                         }
                         conductor.loadFiles(fileName: audioFiles[fileSelected-1].fileName)
                         if isPlaying == true{
                             conductor.audio.start()
-
                         }
                         update.toggle()
-
-
                     }) {
                         Image(systemName: "chevron.forward.circle")
                             .resizable()
@@ -165,8 +153,6 @@ struct AudioFilePlayBack: View {
                     }
                 }
                 .padding(.top, 10)
-
-                
                 Button(action: {
                     print("Audio File Menu")
                     if performanceMode.mode == false{
@@ -174,7 +160,6 @@ struct AudioFilePlayBack: View {
                     } else{
                         print("performance mode on")
                     }
-                    
                 }){
                     ZStack{
                         RoundedRectangle(cornerRadius: 50)
@@ -189,10 +174,7 @@ struct AudioFilePlayBack: View {
                                 .foregroundColor(colours.colour4)
                                 .font(.largeTitle).bold()
                         }
-                        
-                        
                     }
-                    
                 }
                 .sheet(isPresented: $isShowingAudioFileMenu, onDismiss: didDismiss){
                     AudioFileMenuView()

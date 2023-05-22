@@ -162,6 +162,11 @@ struct SettingsMenu: View {
                         }
                     }
                 }
+                Spacer()
+
+                Text("SonicShift has been created by Alice Milburn as part of a Masters Project in Electronic Engineering with Music Technology Systems")
+                    .multilineTextAlignment(.center)
+
             }
             .padding()
         }

@@ -28,32 +28,25 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
     @Published var instMixer = Mixer()
     @Published var oscMixer = Mixer()
     @Published var mixer = Mixer()
-//    @Published var OscOn = true
     
     //Set up oscillator
     var instrument = AppleSampler()
-//    var instrument = MIDISampler(name: "Instrument 1")
     var osc: Oscillator!
     init() {
         osc = Oscillator()
         //Set the oscillator as the engine output
         //Set initial values for the oscilators amplitude and frequency
         osc.amplitude = 0.3
-//        print("Amplitude: \(osc.amplitude)")
         osc.frequency = 330
-//        print("Frequency: \(osc.frequency)")
         
-//        engine.output = osc
         instMixer = Mixer(instrument)
         oscMixer = Mixer(osc)
         mixer = Mixer(instMixer, oscMixer)
-        
-//
+
         instMixer.volume = 2
         oscMixer.volume = 0.5
         engine.output = mixer
         
-//        engine.output = osc
         //Start the engine
         try? engine.start()
 
@@ -66,20 +59,8 @@ class OscillatorConductor: ObservableObject, HasAudioEngine {
             }
         } catch {
             Log("Could not load instrument")
-            
         }
-//        try? engine.start()
     }
-    
-//    func oscOn() {
-//        instMixer.volume = 0.0
-//        oscMixer.volume = 1.0
-//    }
-//
-//    func instOn() {
-//        instMixer.volume = 1.0
-//        oscMixer.volume = 0.0
-//    }
 }
 
 struct ContentView: View {
@@ -202,10 +183,6 @@ struct ContentView: View {
                                 ArcKnob("Effect", value: $volValue)
                                     .foregroundColor(colours.colour5)
                                     .frame(height: thirdHeight - 20)
-//                                    .backgroundColor(CustomGreen)
-//                                    .backgroundStyle(CustomGreen)
-//                                ArcKnob.backgroundColor = CustomGreen
-//backgroundStyle()
                                 //2nd arc knob
                                 ArcKnob("Effect", value: $revValue)
                                     .foregroundColor(colours.colour5)
@@ -238,8 +215,10 @@ struct ContentView: View {
                 motionManagerDM.startDeviceMotionUpdates(to: OperationQueue.main) {
                     (data, error) in
                     if let deviceData = motionManagerDM.deviceMotion {
-//                        print("pitch: \(deviceData.attitude.pitch)" +                              "roll: \(deviceData.attitude.roll) yaw: \(deviceData.attitude.yaw)")
 //                        print("pitch: \(deviceData.attitude.pitch)")
+//                        print("roll: \(deviceData.attitude.roll)")
+//                        print("yaw: \(deviceData.attitude.yaw)")
+                        
                         //Sets oscillator amplitude based on left fader value
                         if volumes.OscOn == true{
                             conductor.osc.amplitude = AUValue(fader1global)

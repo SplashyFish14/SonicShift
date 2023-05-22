@@ -11,15 +11,16 @@ import AVFoundation
 import SwiftUI
 
 final class PlayBackClass: ObservableObject {
+    //Set up audio engine and audio player
     let playBackEngine = AudioEngine()
     let audio = AudioPlayer()
+    //Initiallise the output of the engine and start it
     init(){
         playBackEngine.output = audio
         try? playBackEngine.start()
         audio.volume = 2
-
     }
-
+    //Set up function to load files into the audio played
     func loadFiles(fileName: String){
         do {
             if let file = Bundle.main.url(forResource: fileName, withExtension: "mp3")

@@ -15,8 +15,6 @@ struct SelectInstrument: View {
     @EnvironmentObject var conductor: OscillatorConductor
     @EnvironmentObject var volumes: Volumes
     
-//    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
-    
     var body: some View {
         VStack{
             ZStack{
@@ -40,11 +38,8 @@ struct SelectInstrument: View {
                 }){
                     VStack{
                         Image(systemName: "waveform")
-//                            .resizable()
-//                            .scaledToFit()
                             .font(.largeTitle)
                             .foregroundColor(Color.white)
-
                         Text("Theremin")
                             .font(.largeTitle)
                             .fontWeight(.bold)
@@ -52,7 +47,6 @@ struct SelectInstrument: View {
                     }
                 }
                 .buttonStyle(MyButtonStyleInstrument())
-//                .frame(width: thirdWidth - 20, height: eighthHeight)
                 Spacer()
                 Button(action: {
                     print("Instrument Selected")
@@ -68,12 +62,10 @@ struct SelectInstrument: View {
                         Image(systemName: "pianokeys.inverse")
                             .font(.largeTitle)
                             .foregroundColor(Color.white)
-
                         Text("Keyboard")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundColor(Color.white)
-
                     }
                 }
                 .buttonStyle(MyButtonStyleInstrument())
@@ -86,32 +78,22 @@ struct SelectInstrument: View {
                 Button(action: {
                     print("Instrument 4")
                 }){
-                    VStack{
-//                        Image(systemName: "pianokeys.inverse")
-//                            .font(.largeTitle)
-//                            .foregroundColor(Color.white)
-                        
-                        Text("Coming Soon!")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                    }
+                    Text("Coming Soon!")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+                        .rotationEffect(.degrees(-10))
                 }
                 .buttonStyle(MyButtonStyleInstrument())
                 Spacer()
                 Button(action: {
                     print("Instrument 5")
                 }){
-                    VStack{
-//                        Image(systemName: "pianokeys.inverse")
-//                            .font(.largeTitle)
-//                            .foregroundColor(Color.white)
-                        
-                        Text("Coming Soon!")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.white)
-                    }
+                    Text("Coming Soon!")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+                        .rotationEffect(.degrees(-10))
                 }
                 .buttonStyle(MyButtonStyleInstrument())
                 Spacer()
